@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
     <div class="wrap">
         <div class="login">
             <h1>로그인</h1><br>
@@ -22,17 +23,28 @@
             </div>
             <div class="button">
                 <input type="button" value="로그인">
-
-
             </div>
             <div class="login_re">
                 <div class="checkbox">
                     <input type="checkbox" checked> 로그인 정보 저장
                 </div>
             </div>
+            <div>
+                <button onclick="location.href='memberList.html'">회원가입</button>
+            </div>
 
         </div>
     </div>
+
+    <script>
+        let btn = document.getElementsByTagName ('button');
+
+        btn[0].onclick = function() {
+            
+        }
+    </script>
+
+
 </body>
 
 </html>
