@@ -6,22 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YedamFlix_MAINPAGE</title>
+    <script src = "../jquery/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="main_style.css">
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                url:'',
+                type: 'get',
+                data: '',
+                dataType:'',
+                success: function(){},
+                error: function(){}
+            })
+        })
+
+    </script>
 </head>
 
 <body>
     <!--Navigation 기본 구성-->
     <nav>
-        <div>
+        <div id="logo">
             <h1 class="nav_logo">YedamFlix</h1>
         </div>
-        <div>
+        <div id="menu">
             <ul>
                 <li><a>홈</a></li>
                 <li><a>TV</a></li>
                 <li><a>영화</a></li>
             </ul>
+        </div>
+        <div id="btnSearch">
             <button>검색</button>
+        </div>
+        <div id="btnLogin">
             <button>로그인</button>
         </div>
     </nav>
@@ -29,7 +47,7 @@
     <!--Page Content-->
         <!--기본 콘텐츠 슬라이드-->
         <section>
-            <div>
+            <div id="basicImg">
                 <img class = "img-fluid" src="../images/동백.png" alt="..">
                 <img class = "img-fluid" src="../images/동백.png" alr="..">
                 <img class = "img-fluid" src="../images/동백.png" alr="..">
@@ -43,7 +61,7 @@
             <div>
                 <h3>지금 뜨는 TV 컨텐츠</h3>
             </div>
-            <div>
+            <div id="tvImg">
                 <img class = "img-fluid" src="../images/동백.png" alt="..">
                 <img class = "img-fluid" src="../images/동백.png" alr="..">
                 <img class = "img-fluid" src="../images/동백.png" alr="..">
@@ -57,7 +75,7 @@
             <div>
                 <h3>지금 뜨는 영화 컨텐츠</h3>
             </div>
-            <div>
+            <div id="mvImg">
                 <img class = "img-fluid" src="../images/동백.png" alt="..">
                 <img class = "img-fluid" src="../images/동백.png" alr="..">
                 <img class = "img-fluid" src="../images/동백.png" alr="..">
@@ -67,5 +85,7 @@
         </section>
     <!--Footer-->
 
+
 </body>
+
 </html>
