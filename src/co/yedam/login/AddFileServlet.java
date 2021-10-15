@@ -32,7 +32,7 @@ public class AddFileServlet extends HttpServlet {
 		String phoneNb = request.getParameter("phoneNb");
 		String email = request.getParameter("email");
 
-		System.out.printf(id, pw, name, phoneNb, email);
+		//System.out.printf(id, pw, name, phoneNb, email);
 		
 		MemberDAO dao = new MemberDAO();
 		MemberVO vo = dao.uploadFile(id, pw, name, phoneNb, email);
