@@ -12,7 +12,7 @@
 <body>
     <h1>회원가입</h1>
 
-    <form id="form" method="post" enctype="multipart/form-data" onsubmit="submitAction(event)">
+    <form id="form" method="post" onsubmit="submitAction(event)">
         id: <input type="text" name="id"><br>
         pw: <input type="text" name="pw"><br>
         name: <input type="text" name="name"><br>
@@ -31,10 +31,7 @@
             //ajax 호출
             $.ajax({
                 url: '../AddFileServlet',
-                type: $('#form').attr('method'),
-                data: data,
-                processData: false,
-                contentType: false,
+                data: $('#form').serialize(),
                 dataType: 'json',
                 success: function(result) {
                     alert('성공');
