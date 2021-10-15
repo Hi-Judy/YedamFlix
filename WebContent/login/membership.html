@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login/membership.html</title>
+    <script src="../jquery/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <h1>회원가입</h1>
+
+    <form id="form" method="post" enctype="multipart/form-data" onsubmit="submitAction(event)">
+        id: <input type="text" name="id"><br>
+        pw: <input type="text" name="pw"><br>
+        name: <input type="text" name="name"><br>
+        phoneNb: <input type="text" name="phoneNb"><br>
+        email: <input type="email" name="email"><br>
+        <input type="submit" value="회원가입">
+    </form>
+
+    <script>
+
+        function submitAction(ev) {
+            ev.preventDefault();
+            let frm = document.getElementById('form');
+            let data = new FormData(form);
+
+            //ajax 호출
+            $.ajax({
+                url: '../AddFileServlet'
+            })
+        }
+    </script>
+
+
+</body>
+
+</html>
