@@ -1,11 +1,15 @@
 package co.yedam.login;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @WebServlet("/AddFileServlet")
 public class AddFileServlet extends HttpServlet {
@@ -21,7 +25,7 @@ public class AddFileServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
-
+		
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String name = request.getParameter("name");
@@ -30,6 +34,9 @@ public class AddFileServlet extends HttpServlet {
 
 		MemberDAO dao = new MemberDAO();
 		MemberVO vo = dao.uploadFile(id, pw, name, phoneNb, email);
+
+		Gson gson = new GsonBuilder().create();
+		response.getWriter().println(gson.toJson(vo));
 		
 	}
 

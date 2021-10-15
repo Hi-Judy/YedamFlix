@@ -30,8 +30,23 @@
 
             //ajax 호출
             $.ajax({
-                url: '../AddFileServlet'
-            })
+                url: '../AddFileServlet',
+                type: $('#form').attr('method'),
+                data: data,
+                processData: false,
+                contentType: false,
+                dataType: 'json',
+                success: function(result) {
+                    alert('성공');
+                    console.log(result);
+
+                    $('#form>input').not('[type="submit"]').val('');
+                },
+                error: function() {
+                    alert('실패');
+                }
+
+            });
         }
     </script>
 

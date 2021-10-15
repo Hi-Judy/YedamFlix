@@ -9,12 +9,12 @@ public class MemberDAO extends DAO{
 	// 회원등록
 	public MemberVO uploadFile(String id, String pw, String name, String phoneNb, String email) {
 		connect();
-		String sql = "insert into ydflix values(?,?,?,?,?)";
+		String sql = "insert into ydflix values(?,?,?,?,?,?)";
 		
 		try {
 			int nextNum = -1;
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select nvl (max(num),0)+1 from ydfli");
+			rs = stmt.executeQuery("select nvl (max(num),0)+1 from ydflix");
 			if(rs.next()) {
 				nextNum = rs.getInt(1);
 			}
@@ -23,7 +23,7 @@ public class MemberDAO extends DAO{
 			psmt.setString(2, id);
 			psmt.setString(3, pw);
 			psmt.setString(4, name);
-			psmt.setString(5,phoneNb);
+			psmt.setString(5, phoneNb);
 			psmt.setString(6, email);
 			
 			int r = psmt.executeUpdate();
