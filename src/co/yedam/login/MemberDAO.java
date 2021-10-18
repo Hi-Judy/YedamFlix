@@ -1,6 +1,8 @@
 package co.yedam.login;
 
+import java.lang.reflect.Member;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import co.yedam.common.DAO;
@@ -48,18 +50,16 @@ public class MemberDAO extends DAO{
 		}
 	}
 	
-	// 회원 유무 확인
-	public List<MemberVO> checkFile() {
-		connect();
-		String sql = "select * from ydflix where id= (?) and pw= (?)";
-		
-		try {
-			stmt = conn.createStatement();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			disconnect();
-		}
-		return ;
-	}
+	/*
+	 * // 회원 유무 확인 public List<Member> getMemberList(String id){ connect();
+	 * List<Member> list = new ArrayList<>(); String sql =
+	 * "select pw from ydflix where id = ?";
+	 * 
+	 * try { stmt = conn.createStatement(); psmt = conn.prepareStatement(sql);
+	 * 
+	 * psmt.setString(1, id);
+	 * 
+	 * } catch (SQLException e) { e.printStackTrace(); } finally { disconnect(); }
+	 * return list; }
+	 */
 }

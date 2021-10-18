@@ -20,7 +20,7 @@
             </div>
             <div class="login_pw">
                 <i class="fas fa-key fa-2x"></i> &nbsp;
-                <input type="password" placeholder="  Password">
+                <input type="text" placeholder="  Password">
             </div>
             <div class="button">
                 <input type="button" value="로그인">
@@ -37,17 +37,27 @@
         </div>
     </div>
 
-    <script>
-        // let dbdata = 
-        function login(id, pw) {
-            for (let i = 0; i < dbdata.length ; i++) {
-                
-        }
-    }
-        function submitCheck() {
-            let info = login('');
-        }
+    <!-- <script>
+        let btn = document.getElementsByTagName('button');
+        
+        btn[0].onclick = function() {
+            let input_id = $(member).find('div>div>div[0]');
+            let input_pw = $(member).find('div>div>div[1]');
+            
+            if(member.id = input_id) {
+                if(member.pw = input_pw) {
+                    console.log("로그인 성공");
+                } else {
+                    console.log("로그인 실패");
+                }
+            }
+            
+            return null;
+
+            
+        } -->
     </script>
+    
 </body>
 
 </html>
