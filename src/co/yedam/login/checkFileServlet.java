@@ -17,7 +17,17 @@ public class checkFileServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+
+		PrintWriter out = response.getWriter();
+		Gson gson = new GsonBuilder().create();
+
+		MemberDAO dao = new MemberDAO();
+		List<MemberVO> list = dao.checkList();
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
