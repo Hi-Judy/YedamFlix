@@ -5,68 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>메인페이지</title>
+    <title>tv페이지</title>
     <script src = "../jquery/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="main_style.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script>
-    //이미지 클릭시 전체 팝업창 띄우기
-    	//방법1
-    	$(document).ready(function(){
-    		$('#click_img').click(function(){
-    			$("#popup").fadeIn();
-    		});
-    		$(".exit").click(function(){
-    			$("#popup").fadeOut();
-   		});
-		//방법2
-//		function popImg(src){
-//			$("#detail_img").attr("src", src);
-//			$("#product_popup").show();
-//		}
-//		$(function(){
-//			$("#pop_close").click(function(){
-//				$("#detail_img_pop").hide();
-//			});
-//		});
-		//방법3
-//		var img = document.getElementByClassName('click_img');
-//		for (var x=0; x<img.length; x++){
-//			img.item(x).onclick=function(){window.open(this.src)};
-//			}
-	
-		
-    		
-        //TV화면 연결
-       function goTV(){
-        	e.preventDefault();
-        	$.ajax({
-        		url: '../MainServlet?cmd=tv',
-        		type: 'get',
-        		data: '',
-				success: function(result){
-					console.log(result);
-				},
-				error: function(reject){
-					console.log(reject)
-				}
-        	}) 
-        }
-        	
-        
-        //영화화면 연결
-        
-        
-        //로그인 화면 연결
-        
-        
-        //회원가입 연결
-
-    </script>
 </head>
 
 <body>
-    <!--Navigation 기본 구성-->
+ <!--Navigation 기본 구성-->
     <nav>
         <div id="logo">
             <h1 class="nav_logo">YedamFlix</h1>
@@ -74,17 +19,17 @@
         <div id="menu">
         	<form>
         		<ul>
-                	<input type='button' value='홈' onclick ="location.href='main.html'">
+                	<input type='button' value='홈' onclick ="location.href='../main/home.html'">
                 	<input type='button' value='TV' onclick ="location.href='../main/tv.html'">
                 	<input type='button' value='영화' onclick ="location.href='../main/movie.html'">
             	</ul>
             </form>
-        </div>
-        <div id="btnSearch">
+         </div>
+	     <div id="btnSearch">
             <input type='text' class="form-control bg-light border-0 small" placeholder="검색">
         	<button type="button">검색</button>
         </div>
-        <div id="btnLogin">
+          <div id="btnLogin">
 
             <button type="button" onclick="location.href='../login/login.html'">로그인</button>
         </div>
@@ -93,14 +38,13 @@
     <!--Page Content-->
         <!--기본 콘텐츠 슬라이드-->
         <section>
-            <div id="img_pop">
-            	<ul>
-            		<li><img class="click_img" src="../images/동백.png" alt=".."></li>
-            		<li><img class="click_img" src="../images/동백.png" alt=".."></li>
-            		<li><img class="click_img" src="../images/동백.png" alt=".."></li>
-            		<li><img class="click_img" src="../images/동백.png" alt=".."></li>
-            	</ul>
-             </div>
+            <div id="basicImg">
+                <img class = "img-fluid" src="../images/동백.png" alt="..">
+                <img class = "img-fluid" src="../images/동백.png" alt="..">
+                <img class = "img-fluid" src="../images/동백.png" alt="..">
+                <img class = "img-fluid" src="../images/동백.png" alt="..">
+                <img class = "img-fluid" src="../images/동백.png" alt="..">
+            </div>
         </section>
 
         <!--지금 뜨는 TV-->
@@ -131,7 +75,6 @@
             </div>
         </section>
     <!--Footer-->
-
 
 </body>
 
