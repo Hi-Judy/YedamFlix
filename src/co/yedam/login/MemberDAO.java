@@ -50,16 +50,33 @@ public class MemberDAO extends DAO{
 		}
 	}
 	
-	/*
-	 * // 회원 유무 확인 public List<Member> getMemberList(String id){ connect();
-	 * List<Member> list = new ArrayList<>(); String sql =
-	 * "select pw from ydflix where id = ?";
-	 * 
-	 * try { stmt = conn.createStatement(); psmt = conn.prepareStatement(sql);
-	 * 
-	 * psmt.setString(1, id);
-	 * 
-	 * } catch (SQLException e) { e.printStackTrace(); } finally { disconnect(); }
-	 * return list; }
-	 */
+	public List<MemberVO> checkList() {
+		connect();
+		List<MemberVO> list = new ArrayList<>();
+		String sql = "select pw from ydflix where id = ?";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+
+			while(rs.next()) {
+				MemberVO vo = new MemberVO();
+				vo.setNum(rs.getInt("num"));
+				vo.setId(rs.getString("id"));
+				vo.setPw(rs.getString("pw"));
+				vo.setName(rs.getString("name"));
+				vo.setPhoneNb(rs.getString("phoneNb"));
+				vo.setEmail(rs.getString("email"));
+				list.add(vo);
+			}
+
+			psmt.setString(1, id);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		} return list;
+	}
+
 }

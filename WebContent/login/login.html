@@ -37,25 +37,25 @@
         </div>
     </div>
 
-    <!-- <script>
+    <script>
         let btn = document.getElementsByTagName('button');
         
         btn[0].onclick = function() {
-            let input_id = $(member).find('div>div>div[0]');
-            let input_pw = $(member).find('div>div>div[1]');
-            
-            if(member.id = input_id) {
-                if(member.pw = input_pw) {
+            $.ajax({
+                url: '../checkFileServlet',
+                type: 'get',
+                dataType: 'json',
+                success: function (result) {
                     console.log("로그인 성공");
-                } else {
+                },
+                error: function (reject) {
                     console.log("로그인 실패");
                 }
-            }
+            });
             
             return null;
-
-            
-        } -->
+          
+        }
     </script>
     
 </body>
