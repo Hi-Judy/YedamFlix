@@ -16,14 +16,15 @@
             <h1>로그인</h1><br>
             <div class="login_id">
                 <i class="fas fa-user fa-2x "></i> &nbsp;
-                <input type="text" placeholder="  Username">
+                <input id='inputId' type="text" placeholder="  Id">
             </div>
             <div class="login_pw">
                 <i class="fas fa-key fa-2x"></i> &nbsp;
-                <input type="text" placeholder="  Password">
+                <input id='inputPw' type="text" placeholder="  Password">
             </div>
             <div class="button">
-                <input type="button" value="로그인">
+               	<!-- <input type="button" value="로그인" id="login"> -->
+                <button>로그인</button>
             </div>
             <div class="login_re">
                 <div class="checkbox">
@@ -33,7 +34,6 @@
             <div>
                 <button onclick="location.href='membership.html'">회원가입</button>
             </div>
-
         </div>
     </div>
 
@@ -44,12 +44,25 @@
             $.ajax({
                 url: '../checkFileServlet',
                 type: 'get',
+                data: {
+                	id: $('#inputId').val(),
+                	pw: $('#inputPw').val()
+                },
                 dataType: 'json',
                 success: function (result) {
-                    console.log("로그인 성공");
+                	console.log(result);
+                	console.log();
+                	if(result == 1){
+                		console.log("성공");
+                        alert('YDFLIX에 오신 것을 환영합니다.');
+                        location.href='../main/main.html';	
+                	} else {
+                		console.log("아이디 또는 비밀번호가 잘못 입력되었습니다.");
+                	}
                 },
                 error: function (reject) {
                     console.log("로그인 실패");
+                    alert('로그인오류발생');
                 }
             });
             

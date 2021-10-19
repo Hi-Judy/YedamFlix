@@ -38,6 +38,9 @@
                     console.log(result);
 
                     $('#form>input').not('[type="submit"]').val('');
+
+                    location.href='login.html';
+                    
                 },
                 error: function() {
                     alert('등록되지 않았습니다.');

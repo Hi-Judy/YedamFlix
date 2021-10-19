@@ -1,6 +1,5 @@
 package co.yedam.login;
 
-import java.lang.reflect.Member;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,33 +49,36 @@ public class MemberDAO extends DAO{
 		}
 	}
 	
-	public List<MemberVO> checkList() {
+	public int checkListById(String id, String pw) {
 		connect();
 		List<MemberVO> list = new ArrayList<>();
 		String sql = "select pw from ydflix where id = ?";
-
+		String dbpw = "";
+		int x = -1;
 		try {
 			psmt = conn.prepareStatement(sql);
-			rs = psmt.executeQuery();
-
-			while(rs.next()) {
-				MemberVO vo = new MemberVO();
-				vo.setNum(rs.getInt("num"));
-				vo.setId(rs.getString("id"));
-				vo.setPw(rs.getString("pw"));
-				vo.setName(rs.getString("name"));
-				vo.setPhoneNb(rs.getString("phoneNb"));
-				vo.setEmail(rs.getString("email"));
-				list.add(vo);
-			}
-
 			psmt.setString(1, id);
+			
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				dbpw = rs.getString("pw");
+				
+				if(dbpw.equals(pw)) {
+					x = 1;
+				} else {
+					x = 0;
+				}
+			} else {
+				x = -1;
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			disconnect();
-		} return list;
+		} 
+		return x;
 	}
 
 }
