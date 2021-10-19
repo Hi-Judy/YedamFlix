@@ -1,7 +1,7 @@
 <2021.10.18 이정민>
 create table ydflix (
-    num number primary key,
-    id VARCHAR2(30),
+    num number,
+    id VARCHAR2(30) PRIMARY key,
     pw VARCHAR2(30),
     name VARCHAR2(30),
     phoneNb char(20),
@@ -12,10 +12,7 @@ select nvl (max(num),0)+1 from ydflix;
 
 select * from ydflix ORDER BY num;
 
-insert into ydflix values ('1','1','1','1','1','1@email');
-
 delete from ydflix where num >= 1;
 
 drop table ydflix;
-
 
