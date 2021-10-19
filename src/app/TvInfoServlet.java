@@ -30,8 +30,9 @@ public class TvInfoServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Gson gson = new GsonBuilder().create();
 		
+		String tvCode = request.getParameter("getTvList");
 		YedamFlixDAO dao = new YedamFlixDAO();
-		List<TV> tlist = dao.getTvList();
+		boolean tlist = dao.getTvList(tvCode);
 		
 		out.println(gson.toJson(tlist));
 		

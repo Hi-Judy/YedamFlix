@@ -14,23 +14,26 @@ public class YedamFlixDAO extends DAO{
 		return singleton;
 	}
 	//tv 목록 가져오기
-	public List<TV> getTvList(){
+	public List<TV> getTvList(String tvCode){
 		connect();
 		List<TV> tlist = new ArrayList<>();
+		String sql = "select tvtitle, actors, genre, feature, story, opendate, grade from tv where tvCode=?";
 		try {
-			stmt=conn.createStatement();
-			rs=stmt.executeQuery("select*from tv where rownum=1 order by 1");
-			while(rs.next()) {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1,tvCode);
+			rs=psmt.executeQuery();
+			
+			if(rs.next()) {
 				TV tv = new TV();
-				tv.settTitle(rs.getString("tvTitle"));
-				tv.settActors(rs.getString("Actors"));
-				tv.settGenre(rs.getString("Genre"));
-				tv.settFeature(rs.getString("Feature"));
-				tv.settStoty(rs.getString("Story"));
-				tv.settOpendate(rs.getString("Opendate"));
-				tv.settGrade(rs.getString("Grade"));
+				tv.settTitle(rs.getString("tvtitle"));
+				tv.settActors(rs.getString("actors"));
+				tv.settGenre(rs.getString("genre"));
+				tv.settFeature(rs.getString("feature"));
+				tv.settStoty(rs.getString("story"));
+				tv.settOpendate(rs.getString("opendate"));
+				tv.settGrade(rs.getString("grade"));
+				
 				tlist.add(tv);
-				System.out.println(tv);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -18,11 +18,9 @@
         </div>
         <div id="menu">
         	<form>
-        		<ul>
-                	<input type='button' value='홈' onclick ="location.href='../main/home.html'">
-                	<input type='button' value='TV' onclick ="location.href='../main/tv.html'">
-                	<input type='button' value='영화' onclick ="location.href='../main/movie.html'">
-            	</ul>
+               	<input type='button' value='홈' onclick="location.href='../main/main.html'">
+               	<input type='button' value='TV' onclick ="location.href='../main/tv.html'">
+               	<input type='button' value='영화' onclick ="location.href='../main/movie.html'">
             </form>
          </div>
 	     <div id="btnSearch">
@@ -30,49 +28,80 @@
         	<button type="button">검색</button>
         </div>
           <div id="btnLogin">
-
             <button type="button" onclick="location.href='../login/login.html'">로그인</button>
         </div>
     </nav>
 
     <!--Page Content-->
-        <!--기본 콘텐츠 슬라이드-->
-        <section>
-            <div id="basicImg">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-            </div>
-        </section>
 
         <!--지금 뜨는 TV-->
         <section>
-            <div>
-                <h3>지금 뜨는 TV 컨텐츠</h3>
-            </div>
-            <div id="tvImg">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-            </div>
-        </section>
+        <div>
+            <h3>지금 뜨는 TV 컨텐츠</h3>
+        </div>
+        <button onclick="document.getElementById('image').style.display='block'" style="width:auto;">
+        	<img class="img-fluid" src="../images/동백.png" alt="..">
+			<img class="img-fluid" src="../images/괜찮아.png" alt="..">
+			<img class="img-fluid" src="../images/모던패밀리.jpg" alt="..">
+			<img class="img-fluid" src="../images/도깨비.jpg" alt="..">
+        </button>
+        <div id="image" class="model">
 
-        <!--지금 뜨는 영화-->
+            <form id="popFrm" action="/action_page.php" method="post" enctype="multipart/form-data" >
+            	
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('image').style.display='none'" class="close">닫기</span>
+                </div>
+				
+                <div class=container>
+                    <img class="click_img" src="../images/동백.png">
+                    <div id="test">
+                    	<table id="tbl" border="1">
+                    		<tbody>
+                    			<tr>
+                    				<!-- <td>동백꽃 필 무렵</td><td>공효진, 강하늘</td><td>로맨스</td><td>가족</td><td>동백이와 용식이</td><td>2019</td><td>15세</td> -->
+                    			</tr>
+                    		</tbody>
+                    	</table>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+        <!--인생드라마 TOP 10-->
         <section>
             <div>
-                <h3>지금 뜨는 영화 컨텐츠</h3>
+                <h3>인생드라마 TOP 10</h3>
             </div>
-            <div id="mvImg">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-            </div>
+            <button onclick="document.getElementById('image').style.display='block'" style="width:auto;">
+   				<img class = "img-fluid" src="../images/동백꽃.jpg" alt="..">
+                <img class = "img-fluid" src="../images/모던패밀리.jpg" alt="..">
+                <img class = "img-fluid" src="../images/미생.jpg" alt="..">
+                <img class = "img-fluid" src="../images/도깨비.jpg" alt="..">
+        	</button>
+       			<div id="image" class="model">
+
+           		<form id="popFrm" action="/action_page.php" method="post" enctype="multipart/form-data" >
+            	
+	                <div class="imgcontainer">
+	                    <span onclick="document.getElementById('image').style.display='none'" class="close">닫기</span>
+	                </div>
+					
+	                <div class=container>
+	                    <img class="click_img" src="../images/동백.png">
+	                    <div id="test">
+	                    	<table id="tbl" border="1">
+	                    		<tbody>
+	                    			<tr>
+	                    				<!-- <td>동백꽃 필 무렵</td><td>공효진, 강하늘</td><td>로맨스</td><td>가족</td><td>동백이와 용식이</td><td>2019</td><td>15세</td> -->
+	                    			</tr>
+	                    		</tbody>
+	                    	</table>
+	                    </div>
+	                </div>
+	            </form>
+        </div>
         </section>
     <!--Footer-->
 

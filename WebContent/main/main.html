@@ -14,7 +14,7 @@
     	}
     	
     	function popUp(){
-	        var model = document.getElementById('img01');
+	        var model = document.getElementById('image');
 	        window.onclick = function (event) {
 	            if (event.target == model) {
 	                model.style.display = "none"
@@ -45,8 +45,13 @@
       
         
         function showContentInfo(){
-			trVal = document.querySelectorAll('tbody>tr>td:nth-child(1)');  
-			console.log(trVal);
+        	var model = document.getElementById('img01');
+	        window.onclick = function (event) {
+	            if (event.target == model) {
+	                model.style.display = "none"
+	            };
+    		}
+        	
         }
 		
         //영화화면 연결
@@ -67,7 +72,7 @@
         </div>
         <div id="menu">
             <form>
-                <input type='button' value='홈' onclick="location.href='main.html'">
+                <input type='button' value='홈' onclick="location.href='../main/main.html'">
                 <input type='button' value='TV' onclick="location.href='../main/tv.html'">
                 <input type='button' value='영화' onclick="location.href='../main/movie.html'">
             </form>
@@ -77,7 +82,6 @@
             <button type="button">검색</button>
         </div>
         <div id="btnLogin">
-
             <button type="button" onclick="location.href='../login/login.html'">로그인</button>
         </div>
     </nav>
@@ -85,13 +89,18 @@
     <!--Page Content-->
     <!--기본 콘텐츠 슬라이드-->
     <section>
-		<img class="image1" onclick="document.getElementById('img01').style.display='block'" style="width:auto;" src="../images/동백.png">
-        <div id="img01" class="model">
+		<button onclick="document.getElementById('image').style.display='block'" style="width:auto;">
+			<img class="image1" src="../images/오징어게임.jpg" alt="..">
+            <img class="image2" src="../images/you.jpg" alt="..">
+            <img class="image3" src="../images/굿플레이스.jpg" alt="..">
+            <img class="image4" src="../images/미생.jpg" alt="..">
+        </button>
+        <div id="image" class="model">
 
             <form id="popFrm" action="/action_page.php" method="post" enctype="multipart/form-data" >
             	
                 <div class="imgcontainer">
-                    <span onclick="document.getElementById('img01').style.display='none'" class="close">닫기</span>
+                    <span onclick="document.getElementById('image').style.display='none'" class="close">닫기</span>
                 </div>
 				
                 <div class=container>
@@ -109,16 +118,6 @@
             </form>
         </div>
 
-
-        <div id="images">
-            <ul>
-        		<li><img onclick="showContentInfo(1)" class="image1" src="../images/동백.png" alt=".."></li>
-                <li><img onclick="showContentInfo(2)" class="image2" src="../images/오징어게임.jpg" alt=".."></li>
-                <li><img onclick="showContentInfo(3)" class="image3" src="../images/도깨비.jpg" alt=".."></li>
-                <li><img onclick="showContentInfo(4)" class="image4" src="../images/굿플레이스.jpg" alt=".."></li>
-                <li><img onclick="showContentInfo(5)" class="image5" src="../images/미생.jpg" alt=".."></li>
-            </ul>
-        </div>
     </section>
 
     <!--지금 뜨는 TV-->
@@ -126,12 +125,33 @@
         <div>
             <h3>지금 뜨는 TV 컨텐츠</h3>
         </div>
-        <div id="tvImg">
-            <img class="img-fluid" src="../images/동백.png" alt="..">
-            <img class="img-fluid" src="../images/동백.png" alt="..">
-            <img class="img-fluid" src="../images/동백.png" alt="..">
-            <img class="img-fluid" src="../images/동백.png" alt="..">
-            <img class="img-fluid" src="../images/동백.png" alt="..">
+        <button onclick="document.getElementById('image').style.display='block'" style="width:auto;">
+        	<img class="img-fluid" src="../images/동백.png" alt="..">
+			<img class="img-fluid" src="../images/괜찮아.png" alt="..">
+			<img class="img-fluid" src="../images/모던패밀리.jpg" alt="..">
+			<img class="img-fluid" src="../images/도깨비.jpg" alt="..">
+        </button>
+        <div id="image" class="model">
+
+            <form id="popFrm" action="/action_page.php" method="post" enctype="multipart/form-data" >
+            	
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('image').style.display='none'" class="close">닫기</span>
+                </div>
+				
+                <div class=container>
+                    <img class="click_img" src="../images/동백.png">
+                    <div id="test">
+                    	<table id="tbl" border="1">
+                    		<tbody>
+                    			<tr>
+                    				<!-- <td>동백꽃 필 무렵</td><td>공효진, 강하늘</td><td>로맨스</td><td>가족</td><td>동백이와 용식이</td><td>2019</td><td>15세</td> -->
+                    			</tr>
+                    		</tbody>
+                    	</table>
+                    </div>
+                </div>
+            </form>
         </div>
     </section>
 
@@ -140,16 +160,42 @@
         <div>
             <h3>지금 뜨는 영화 컨텐츠</h3>
         </div>
-        <div id="mvImg">
-            <img class="img-fluid" src="../images/동백.png" alt="..">
-            <img class="img-fluid" src="../images/동백.png" alt="..">
-            <img class="img-fluid" src="../images/동백.png" alt="..">
-            <img class="img-fluid" src="../images/동백.png" alt="..">
-            <img class="img-fluid" src="../images/동백.png" alt="..">
+        <button onclick="document.getElementById('image').style.display='block'" style="width:auto;">
+			<img class = "img-fluid" src="../images/가오갤.jpg" alt="..">
+			<img class = "img-fluid" src="../images/기생충.jpg" alt="..">
+			<img class = "img-fluid" src="../images/라이프.jpg" alt="..">
+			<img class = "img-fluid" src="../images/레미제라블.jpg" alt="..">
+        </button>
+        <div id="image" class="model">
+
+            <form id="popFrm" action="/action_page.php" method="post" enctype="multipart/form-data" >
+            	
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('image').style.display='none'" class="close">닫기</span>
+                </div>
+				
+                <div class=container>
+                    <img class="click_img" src="../images/동백.png">
+                    <div id="test">
+                    	<table id="tbl" border="1">
+                    		<tbody>
+                    			<tr>
+                    				<!-- <td>동백꽃 필 무렵</td><td>공효진, 강하늘</td><td>로맨스</td><td>가족</td><td>동백이와 용식이</td><td>2019</td><td>15세</td> -->
+                    			</tr>
+                    		</tbody>
+                    	</table>
+                    </div>
+                </div>
+            </form>
         </div>
     </section>
     <!--Footer-->
 	<script>
+	fetch('movie.json')
+    .then(x => x.json())
+    .then(data => createTable(data));
+
+	
 	 function createDiv(data){
      	console.log(data);
      	
