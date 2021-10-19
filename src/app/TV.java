@@ -1,4 +1,4 @@
-package co.yedam.common;
+package app;
 
 public class TV {
 	private int tvCode;
@@ -6,7 +6,7 @@ public class TV {
 	private String tActors;
 	private String tGenre;
 	private String tFeature;
-	private String tStoty;
+	private String tStory;
 	private String tOpendate;
 	private String tGrade;
 	
@@ -41,10 +41,10 @@ public class TV {
 		this.tFeature = tFeature;
 	}
 	public String gettStoty() {
-		return tStoty;
+		return tStory;
 	}
 	public void settStoty(String tStoty) {
-		this.tStoty = tStoty;
+		this.tStory = tStoty;
 	}
 	public String gettOpendate() {
 		return tOpendate;
@@ -61,7 +61,7 @@ public class TV {
 	@Override
 	public String toString() {
 		return "TV [tvCode=" + tvCode + ", tTitle=" + tTitle + ", tActors=" + tActors + ", tGenre=" + tGenre
-				+ ", tFeature=" + tFeature + ", tStoty=" + tStoty + ", tOpendate=" + tOpendate + ", tGrade=" + tGrade
+				+ ", tFeature=" + tFeature + ", tStoty=" + tStory + ", tOpendate=" + tOpendate + ", tGrade=" + tGrade
 				+ "]";
 	}
 	

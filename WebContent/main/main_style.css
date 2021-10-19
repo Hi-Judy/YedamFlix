@@ -1,32 +1,69 @@
-div>h1{
-    text-align: left; 
-    margin: 10px; 
-    float:left; 
-    color: red; 
-    font-weight: bolder; 
+div>h1 {
+    text-align: left;
+    margin: 10px;
+    float: left;
+    color: red;
+    font-weight: bolder;
     font-size: 50px;
     margin: 20px;
 }
+
 div>ul {
-    list-style-type: none;  
-    margin: 10px; 
-    display: inline-block; 
-    font-size: large; 
-    font-size: 40px;
-}
-div>ul>li{
-    list-style-type: none;  
-    margin: 10px; 
-    display: inline-block; 
-    font-size: large; 
+    list-style-type: none;
+    margin: 10px;
+    display: inline-block;
+    font-size: large;
     font-size: 40px;
 }
 
-div>button{
+div>ul>li {
+    list-style-type: none;
+    margin: 10px;
+    display: inline-block;
+    font-size: large;
+    font-size: 40px;
+}
+
+div>button {
     float: right;
     margin: 30px;
 }
-body{
+
+body {
     background-color: black;
     color: white;
 }
+
+.model {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: 1200px;
+    height: 1000px;
+    overflow: auto;
+    background-color: rgb(43, 37, 37);
+    padding-top: 100px;
+    padding-left: 100px;
+    position: absolute;
+    transform: translate(-50%, -50%)
+}
+
+.container {
+    font-size: large;
+    background-color: rgb(43, 37, 37);
+    width: 1200px;
+    height: 100px;
+
+}
+
+#images {
+ display: inline-block;
+    width: 1000px;
+    height: 1000px;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+

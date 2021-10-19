@@ -6,62 +6,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메인페이지</title>
-    <script src = "../jquery/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="main_style.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../jquery/jquery-3.6.0.min.js"></script>
     <script>
-    //이미지 클릭시 전체 팝업창 띄우기
-    	//방법1
-    	$(document).ready(function(){
-    		$('#click_img').click(function(){
-    			$("#popup").fadeIn();
-    		});
-    		$(".exit").click(function(){
-    			$("#popup").fadeOut();
-   		});
-		//방법2
-//		function popImg(src){
-//			$("#detail_img").attr("src", src);
-//			$("#product_popup").show();
-//		}
-//		$(function(){
-//			$("#pop_close").click(function(){
-//				$("#detail_img_pop").hide();
-//			});
-//		});
-		//방법3
-//		var img = document.getElementByClassName('click_img');
-//		for (var x=0; x<img.length; x++){
-//			img.item(x).onclick=function(){window.open(this.src)};
-//			}
-	
-		
-    		
-        //TV화면 연결
-       function goTV(){
-        	e.preventDefault();
-        	$.ajax({
-        		url: '../MainServlet?cmd=tv',
-        		type: 'get',
-        		data: '',
-				success: function(result){
-					console.log(result);
-				},
-				error: function(reject){
-					console.log(reject)
-				}
-        	}) 
+    	window.onload = function(){
+    		popUp();
+    	}
+    	
+    	function popUp(){
+	        var model = document.getElementById('img01');
+	        window.onclick = function (event) {
+	            if (event.target == model) {
+	                model.style.display = "none"
+	            };
+    		}
         }
-        	
         
-        //영화화면 연결
-        
-        
-        //로그인 화면 연결
-        
-        
-        //회원가입 연결
 
+        //TV popup
+        $.ajax({
+            url: '../TvInfoServlet',
+            dataType: 'json',
+            success: showContentInfo()
+            	//성공했을 때 화면에 보여주기
+                //alert('성공');
+                //console.log(result);
+                //$('#img01').append(createDiv(result));
+            
+            ,
+            error: function (reject) {
+                console.log(reject)
+            }
+        })
+        
+        
+        //TV 테이블 만들기
+        
+      
+        
+        function showContentInfo(){
+			trVal = document.querySelectorAll('tbody>tr>td:nth-child(1)');  
+			console.log(trVal);
+        }
+		
+        //영화화면 연결
+
+
+        //로그인 화면 연결
+
+
+        //회원가입 연결
     </script>
 </head>
 
@@ -72,17 +66,15 @@
             <h1 class="nav_logo">YedamFlix</h1>
         </div>
         <div id="menu">
-        	<form>
-        		<ul>
-                	<input type='button' value='홈' onclick ="location.href='main.html'">
-                	<input type='button' value='TV' onclick ="location.href='../main/tv.html'">
-                	<input type='button' value='영화' onclick ="location.href='../main/movie.html'">
-            	</ul>
+            <form>
+                <input type='button' value='홈' onclick="location.href='main.html'">
+                <input type='button' value='TV' onclick="location.href='../main/tv.html'">
+                <input type='button' value='영화' onclick="location.href='../main/movie.html'">
             </form>
         </div>
         <div id="btnSearch">
             <input type='text' class="form-control bg-light border-0 small" placeholder="검색">
-        	<button type="button">검색</button>
+            <button type="button">검색</button>
         </div>
         <div id="btnLogin">
 
@@ -91,47 +83,97 @@
     </nav>
 
     <!--Page Content-->
-        <!--기본 콘텐츠 슬라이드-->
-        <section>
-            <div id="img_pop">
-            	<ul>
-            		<li><img class="click_img" src="../images/동백.png" alt=".."></li>
-            		<li><img class="click_img" src="../images/동백.png" alt=".."></li>
-            		<li><img class="click_img" src="../images/동백.png" alt=".."></li>
-            		<li><img class="click_img" src="../images/동백.png" alt=".."></li>
-            	</ul>
-             </div>
-        </section>
+    <!--기본 콘텐츠 슬라이드-->
+    <section>
+		<img class="image1" onclick="document.getElementById('img01').style.display='block'" style="width:auto;" src="../images/동백.png">
+        <div id="img01" class="model">
 
-        <!--지금 뜨는 TV-->
-        <section>
-            <div>
-                <h3>지금 뜨는 TV 컨텐츠</h3>
-            </div>
-            <div id="tvImg">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-            </div>
-        </section>
+            <form id="popFrm" action="/action_page.php" method="post" enctype="multipart/form-data" >
+            	
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('img01').style.display='none'" class="close">닫기</span>
+                </div>
+				
+                <div class=container>
+                    <img class="click_img" src="../images/동백.png">
+                    <div id="test">
+                    	<table id="tbl" border="1">
+                    		<tbody>
+                    			<tr>
+                    				<!-- <td>동백꽃 필 무렵</td><td>공효진, 강하늘</td><td>로맨스</td><td>가족</td><td>동백이와 용식이</td><td>2019</td><td>15세</td> -->
+                    			</tr>
+                    		</tbody>
+                    	</table>
+                    </div>
+                </div>
+            </form>
+        </div>
 
-        <!--지금 뜨는 영화-->
-        <section>
-            <div>
-                <h3>지금 뜨는 영화 컨텐츠</h3>
-            </div>
-            <div id="mvImg">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-                <img class = "img-fluid" src="../images/동백.png" alt="..">
-            </div>
-        </section>
+
+        <div id="images">
+            <ul>
+        		<li><img onclick="showContentInfo(1)" class="image1" src="../images/동백.png" alt=".."></li>
+                <li><img onclick="showContentInfo(2)" class="image2" src="../images/오징어게임.jpg" alt=".."></li>
+                <li><img onclick="showContentInfo(3)" class="image3" src="../images/도깨비.jpg" alt=".."></li>
+                <li><img onclick="showContentInfo(4)" class="image4" src="../images/굿플레이스.jpg" alt=".."></li>
+                <li><img onclick="showContentInfo(5)" class="image5" src="../images/미생.jpg" alt=".."></li>
+            </ul>
+        </div>
+    </section>
+
+    <!--지금 뜨는 TV-->
+    <section>
+        <div>
+            <h3>지금 뜨는 TV 컨텐츠</h3>
+        </div>
+        <div id="tvImg">
+            <img class="img-fluid" src="../images/동백.png" alt="..">
+            <img class="img-fluid" src="../images/동백.png" alt="..">
+            <img class="img-fluid" src="../images/동백.png" alt="..">
+            <img class="img-fluid" src="../images/동백.png" alt="..">
+            <img class="img-fluid" src="../images/동백.png" alt="..">
+        </div>
+    </section>
+
+    <!--지금 뜨는 영화-->
+    <section>
+        <div>
+            <h3>지금 뜨는 영화 컨텐츠</h3>
+        </div>
+        <div id="mvImg">
+            <img class="img-fluid" src="../images/동백.png" alt="..">
+            <img class="img-fluid" src="../images/동백.png" alt="..">
+            <img class="img-fluid" src="../images/동백.png" alt="..">
+            <img class="img-fluid" src="../images/동백.png" alt="..">
+            <img class="img-fluid" src="../images/동백.png" alt="..">
+        </div>
+    </section>
     <!--Footer-->
-
+	<script>
+	 function createDiv(data){
+     	console.log(data);
+     	
+     	let table = document.createElement('table');
+     	table.setAttribute('border','1');
+     	let tbody = document.createElement('tbody');
+     	table.appendChild(tbody);
+     	
+     	//tbody => tr 만들기
+     	data.forEach(function(obj, idx){
+     		let tr = document.createElement('tr');
+     		let td = document.createElement('td');
+     		
+     		tr.appendChild(td);
+     		for(let field in obj){
+     			let td = document.createElement('td');
+     			td.innerHTML = obj[field];
+     			tr.appendChild(td);
+     		}
+     		tbody.appendChild(tr);
+     	});
+     	document.getElementById('test').appendChild(table);
+	 }
+	</script>
 
 </body>
 

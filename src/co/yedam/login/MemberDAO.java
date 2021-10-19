@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.yedam.common.DAO;
+import app.DAO;
 
 public class MemberDAO extends DAO{
 

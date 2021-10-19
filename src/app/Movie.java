@@ -1,4 +1,4 @@
-package co.yedam.common;
+package app;
 
 public class Movie {
 

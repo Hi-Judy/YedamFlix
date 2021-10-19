@@ -1,4 +1,4 @@
-package co.yedam.common;
+package app;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -8,12 +8,11 @@ public class YedamFlixDAO extends DAO{
 	
 	private static YedamFlixDAO singleton = new YedamFlixDAO();
 	
-	private YedamFlixDAO() {}
+	public YedamFlixDAO() {}
 	
 	public static YedamFlixDAO getInstance() {
 		return singleton;
 	}
-	
 	//tv 목록 가져오기
 	public List<TV> getTvList(){
 		connect();
@@ -24,13 +23,14 @@ public class YedamFlixDAO extends DAO{
 			while(rs.next()) {
 				TV tv = new TV();
 				tv.settTitle(rs.getString("tvTitle"));
-				tv.settActors(rs.getString("tvActors"));
-				tv.settGenre(rs.getString("tvGenre"));
-				tv.settFeature(rs.getString("tvFeature"));
-				tv.settStoty(rs.getString("tvStory"));
-				tv.settOpendate(rs.getString("tvOpendate"));
-				tv.settGrade(rs.getString("tvGrade"));
+				tv.settActors(rs.getString("Actors"));
+				tv.settGenre(rs.getString("Genre"));
+				tv.settFeature(rs.getString("Feature"));
+				tv.settStoty(rs.getString("Story"));
+				tv.settOpendate(rs.getString("Opendate"));
+				tv.settGrade(rs.getString("Grade"));
 				tlist.add(tv);
+				System.out.println(tv);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -38,7 +38,6 @@ public class YedamFlixDAO extends DAO{
 			disconnect();
 		}
 		return tlist;
-		
 	}
 	
 	//영화 목록 가져오기
