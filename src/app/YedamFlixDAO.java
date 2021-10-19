@@ -19,7 +19,7 @@ public class YedamFlixDAO extends DAO{
 		List<TV> tlist = new ArrayList<>();
 		try {
 			stmt=conn.createStatement();
-			rs=stmt.executeQuery("select*from tv order by 1");
+			rs=stmt.executeQuery("select*from tv where rownum=1 order by 1");
 			while(rs.next()) {
 				TV tv = new TV();
 				tv.settTitle(rs.getString("tvTitle"));
