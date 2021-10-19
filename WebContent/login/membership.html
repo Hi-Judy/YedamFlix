@@ -7,9 +7,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login/membership.html</title>
     <script src="../jquery/jquery-3.6.0.min.js"></script>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+    /* background-color: black; */
+}
+    h1 {
+        color: white;
+    }
+
+    form {
+    align-items: center;
+    color: white;
+    }
+    </style>
 </head>
 
+
 <body>
+    <div>
     <h1>회원가입</h1>
 
     <form id="form" method="post" onsubmit="submitAction(event)">
@@ -19,7 +38,9 @@
         phoneNb: <input type="text" name="phoneNb"><br>
         email: <input type="email" name="email"><br>
         <input type="submit" value="회원가입">
-    </form>
+    </form>    
+    </div>
+    
 
     <script>
 
@@ -38,6 +59,9 @@
                     console.log(result);
 
                     $('#form>input').not('[type="submit"]').val('');
+
+                    location.href='login.html';
+                    
                 },
                 error: function() {
                     alert('등록되지 않았습니다.');

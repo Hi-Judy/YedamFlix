@@ -7,6 +7,20 @@
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script src="../jquery/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="login.css">
+    <style>
+    button {
+    margin-top: 20px;
+
+    padding: 5px;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: red;
+
+    font-size: 1.2em;
+    letter-spacing: 2px;
+	}
+    </style>
 </head>
 
 <body>
@@ -16,46 +30,66 @@
             <h1>로그인</h1><br>
             <div class="login_id">
                 <i class="fas fa-user fa-2x "></i> &nbsp;
-                <input type="text" placeholder="  Username">
+                <input id='inputId' type="text" placeholder="  Id">
             </div>
             <div class="login_pw">
                 <i class="fas fa-key fa-2x"></i> &nbsp;
-                <input type="text" placeholder="  Password">
+                <input id='inputPw' type="text" placeholder="  Password">
             </div>
             <div class="button">
-                <input type="button" value="로그인">
+                <button id="login_btn">로그인</button>
+                <button onclick="location.href='membership.html'" id="membership_btn">회원가입</button>
             </div>
             <div class="login_re">
                 <div class="checkbox">
-                    <input type="checkbox" checked> 로그인 정보 저장
+                    <input id="checkBox" type="checkbox" checked> 로그인 상태 유지
                 </div>
             </div>
-            <div>
-                <button onclick="location.href='membership.html'">회원가입</button>
-            </div>
-
         </div>
     </div>
 
-    <!-- <script>
-        let btn = document.getElementsByTagName('button');
+    <script>
+        
+    	let btn = document.getElementsByTagName('button');
         
         btn[0].onclick = function() {
-            let input_id = $(member).find('div>div>div[0]');
-            let input_pw = $(member).find('div>div>div[1]');
-            
-            if(member.id = input_id) {
-                if(member.pw = input_pw) {
-                    console.log("로그인 성공");
-                } else {
+            $.ajax({
+                url: '../checkFileServlet',
+                type: 'get',
+                data: {
+                	id: $('#inputId').val(),
+                	pw: $('#inputPw').val()
+                },
+                dataType: 'json',
+                success: function (result) {
+                	console.log(result);
+                	console.log();
+                	if(result == 1){
+                		console.log("성공");
+                        alert('YDFLIX에 오신 것을 환영합니다.');
+                        if(document.getElementById('checkBox').checked) {
+                        	localStorage.setItem('userid', $('#inputId').val());
+                        	localStorage.setItem('userpw', $('#inputPw').val());
+                        	console.log('userid : ' + $('#inputId').val() + ' userpw : ' +  $('#inputPw').val());
+                        	let userid = localStorage.getItem('userid');
+                        	let userpw = localStorage.getItem('userpw');
+                        	console.log(`id : ${userid}, pw : ${userpw}`)
+                        }
+        				
+                        location.href='../main/main.html';                      
+                	} else {
+                		alert("아이디 또는 비밀번호가 잘못 입력되었습니다.");
+                	}
+                },
+                error: function (reject) {
                     console.log("로그인 실패");
+                    alert('로그인오류발생');
                 }
-            }
+            });
             
-            return null;
+            return null;        
+        }
 
-            
-        } -->
     </script>
     
 </body>
