@@ -11,15 +11,16 @@
         //main_top컨텐츠 넣어주기
         $.ajax({
             url: '../TopContentServlet?topContent=y',
-            data: 'get',
+            data: 'post',
             dataType: 'json',
             success: function (result) {
                 console.log(result);
                 for (let img of result) {
                     let imgTag = $('<img />').attr({src : '../images/' + img.image});
-                    let btn = $('<button />').attr({id :img.code, onclick : "location.href='../DetailPageServlet?code='"+img.code}).append(imgTag);
+                    let btn = $('<button />').attr({id :img.code, onclick : "location.href='detailPage2.jsp?code='"+img.code}).append(imgTag);
                     $(btn).click(btnCall)
                     $('#main_top').append(btn.append(imgTag));
+                    console.log()
                 }
             },
             error: function (reject) {

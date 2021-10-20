@@ -10,8 +10,9 @@
 <script>
 	<%
 		String code = request.getParameter("code");
+		
 	%>
-	
+	console.log(<%=code%>);
 	window.onload = function(){
 		clickPage();
 	}
@@ -19,11 +20,13 @@
 	function clickPage(){
 		$.ajax({
 			url: '../DetailPageServlet',
-			type: 'post',
+			type: 'get',
 			data: {code: <%=code%>},
 			dataType: 'json',
 			success: function(result){
+				<%=request.getAttribute("content") %> 
 				console.log(result);
+			
 			}
 		})
 	}

@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import app.Content;
-import app.YedamFlixDAO2;
+import app.YedamFlixDAO;
 
 @WebServlet("/DetailContentServlet")
 public class DetailContentServlet extends HttpServlet {
@@ -33,7 +33,7 @@ public class DetailContentServlet extends HttpServlet {
 		String code = request.getParameter("code");
 		System.out.println(code);
 		
-		YedamFlixDAO2 dao = new YedamFlixDAO2();
+		YedamFlixDAO dao = new YedamFlixDAO();
 		Content content = new Content();
 		
 		content = dao.getDetailContent(code);

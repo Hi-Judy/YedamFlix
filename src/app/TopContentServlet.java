@@ -30,7 +30,7 @@ public class TopContentServlet extends HttpServlet {
 		String topContent = request.getParameter("topContent");
 		System.out.println(topContent);
 		
-		YedamFlixDAO2 dao = new YedamFlixDAO2();
+		YedamFlixDAO dao = new YedamFlixDAO();
 		List<Content> tclist = dao.getTopContent(topContent);
 		
 		Gson gson = new GsonBuilder().create();

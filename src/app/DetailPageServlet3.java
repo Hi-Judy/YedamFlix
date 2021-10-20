@@ -11,10 +11,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 @WebServlet("/DetailPageServlet")
-public class DetailPageServlet extends HttpServlet {
+public class DetailPageServlet3 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public DetailPageServlet() {
+    public DetailPageServlet3() {
         super();
     }
 
@@ -25,13 +25,20 @@ public class DetailPageServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		String code = request.getParameter("code");
+		Gson gson = new GsonBuilder().create();
 		
 		YedamFlixDAO dao = new YedamFlixDAO();
-		Content content = dao.getDetailContent(code);
+		String code = request.getParameter("code");
 		
-		Gson gson = new GsonBuilder().create();
+		System.out.println(code);
+		
+		String content = dao.getDetailContent(code);
+		
+		System.out.println(content);
+		
 		response.getWriter().println(gson.toJson(content));
+		
+		request.setAttribute("content", content);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
