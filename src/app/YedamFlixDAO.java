@@ -28,6 +28,7 @@ public class YedamFlixDAO extends DAO{
 			
 			while(rs.next()) {
 				Content content = new Content();
+				content.setCode(rs.getString("code"));
 				content.setTitle(rs.getString("title"));
 				content.setActors(rs.getString("actors"));
 				content.setGenre(rs.getString("genre"));
@@ -60,6 +61,7 @@ public class YedamFlixDAO extends DAO{
 			rs=psmt.executeQuery();
 			
 			if(rs.next()) {
+				content.setCode(rs.getString("code"));
 				content.setTitle(rs.getString("title"));
 				content.setActors(rs.getString("actors"));
 				content.setGenre(rs.getString("genre"));
@@ -93,6 +95,7 @@ public class YedamFlixDAO extends DAO{
 			
 			while(rs.next()) {
 				Content content = new Content();
+				content.setCode(rs.getString("code"));
 				content.setTitle(rs.getString("title"));
 				content.setActors(rs.getString("actors"));
 				content.setGenre(rs.getString("genre"));
@@ -110,6 +113,9 @@ public class YedamFlixDAO extends DAO{
 		}
 		return tclist;
 	}
+	
+	
+	//클릭
 	
 
 }
