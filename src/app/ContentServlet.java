@@ -1,7 +1,6 @@
 package app;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,11 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-@WebServlet("/TvInfoServlet")
-public class TvInfoServlet extends HttpServlet {
+
+@WebServlet("/ContentServlet")
+public class ContentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public TvInfoServlet() {
+    public ContentServlet() {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -27,16 +27,16 @@ public class TvInfoServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		PrintWriter out = response.getWriter();
-		Gson gson = new GsonBuilder().create();
+		String mOrTv = request.getParameter("mOrTv");
+		System.out.println(mOrTv);
 		
-		String tvCode = request.getParameter("getTvList");
 		YedamFlixDAO dao = new YedamFlixDAO();
-		TV tv = dao.getTvList(tvCode);
+		List<Content> clist = dao.getContent(mOrTv);
+				
+		Gson gson = new GsonBuilder().create();
+		response.getWriter().println(gson.toJson(clist));
 		
-		out.println(gson.toJson(tv));
-		
-		
+		System.out.println(clist);
 	}
 		
 

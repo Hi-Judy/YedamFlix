@@ -1,6 +1,7 @@
 package app;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,35 +13,35 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-@WebServlet("/MovieInfoServlet")
-public class MovieInfoServlet extends HttpServlet {
+@WebServlet("/DetailContentServlet")
+public class DetailContentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public MovieInfoServlet() {
-        super();
+
+    public DetailContentServlet() {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/json;charset=UTF-8");
-		response.setCharacterEncoding("UTF-8");
 		
-		String tvTitle = request.getParameter("tvTitle");
-		String tvActors = request.getParameter("tvActors");
-		String tvGenre = request.getParameter("tvGenre");
-		String tvFeature = request.getParameter("tvFeature");
-		String tvStory = request.getParameter("tvStory");
-		String tvOpendate = request.getParameter("tvOpendate");
-		String tvGrade = request.getParameter("tvGrade");
-
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
+		String code = request.getParameter("code");
+		System.out.println(code);
+		
 		YedamFlixDAO dao = new YedamFlixDAO();
-		List<TV> tlist = dao.getTvList();
+		Content content = new Content();
+		
+		content = dao.getDetailContent(code);
 		
 		Gson gson = new GsonBuilder().create();
-		response.getWriter().println(gson.toJson(tlist));
+		response.getWriter().println(gson.toJson(content));
+		
+		System.out.println(content);
 	}
 		
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		doGet(request, response);

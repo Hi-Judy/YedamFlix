@@ -13,27 +13,63 @@ public class YedamFlixDAO extends DAO{
 	public static YedamFlixDAO getInstance() {
 		return singleton;
 	}
-	//tv 목록 가져오기
-	public TV getTvList(String mOrTv){
+	
+	//컨텐츠 목록 가져오기
+	public List<Content> getContent(String mOrTv){
 		connect();
-		String sql = "select * from content where mOrTv=?";
+		List<Content> clist = new ArrayList<>();
+		String sql = "select * from content where mOrTv=nvl(?, mOrTv)";
+		System.out.println("aaa:"+sql);
+		
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1,mOrTv);
 			rs=psmt.executeQuery();
 			
-			if(rs.next()) {
-				TV tv = new TV();
-				tv.settTitle(rs.getString("tvtitle"));
-				tv.settActors(rs.getString("actors"));
-				tv.settGenre(rs.getString("genre"));
-				tv.settFeature(rs.getString("feature"));
-				tv.settStoty(rs.getString("story"));
-				tv.settOpendate(rs.getString("opendate"));
-				tv.settGrade(rs.getString("grade"));
-				tv.
-				return tv;
+			while(rs.next()) {
+				Content content = new Content();
+				content.setTitle(rs.getString("title"));
+				content.setActors(rs.getString("actors"));
+				content.setGenre(rs.getString("genre"));
+				content.setFeature(rs.getString("feature"));
+				content.setStory(rs.getString("story"));
+				content.setOpendate(rs.getString("opendate"));
+				content.setGrade(rs.getString("grade"));
+				content.setImage(rs.getString("image"));
+				clist.add(content);
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		return clist;
+	}
+	
+	
+	//상세목록 가져오기
+	public Content getDetailContent(String code){
+		connect();
+		String sql = "select * from content where code=nvl(?, code)";
+		Content content = new Content();
+		System.out.println("bbb"+sql);
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1,code);
+			rs=psmt.executeQuery();
+			
+			if(rs.next()) {
+				content.setTitle(rs.getString("title"));
+				content.setActors(rs.getString("actors"));
+				content.setGenre(rs.getString("genre"));
+				content.setFeature(rs.getString("feature"));
+				content.setStory(rs.getString("story"));
+				content.setOpendate(rs.getString("opendate"));
+				content.setGrade(rs.getString("grade"));
+				content.setImage(rs.getString("image"));
+			}
+			return content;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -42,30 +78,38 @@ public class YedamFlixDAO extends DAO{
 		return null;
 	}
 	
-	//영화 목록 가져오기
-	public List<Movie> getMvList(){
+	
+
+	//top컨텐츠 가져오기
+	public List<Content> getTopContent(String topContent){
 		connect();
-		List<Movie> mlist = new ArrayList<>();
+		List<Content> tclist = new ArrayList<>();
+		String sql = "select * from content where topContent=nvl(?, topContent)";
+		System.out.println("cc"+sql);
 		try {
-			stmt=conn.createStatement();
-			rs=stmt.executeQuery("select*from movie order by 1");
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1,topContent);
+			rs=psmt.executeQuery();
+			
 			while(rs.next()) {
-				Movie mv = new Movie();
-				mv.setmTitle(rs.getString("mvTitle"));
-				mv.setmActors(rs.getString("mvActors"));
-				mv.setmGenre(rs.getString("mvGenre"));
-				mv.setmFeature(rs.getString("mvFeature"));
-				mv.setmStoty(rs.getString("mvStory"));
-				mv.setmOpendate(rs.getString("mvOpendate"));
-				mv.setmGrade(rs.getString("mvGrade"));
-				mlist.add(mv);
+				Content content = new Content();
+				content.setTitle(rs.getString("title"));
+				content.setActors(rs.getString("actors"));
+				content.setGenre(rs.getString("genre"));
+				content.setFeature(rs.getString("feature"));
+				content.setStory(rs.getString("story"));
+				content.setOpendate(rs.getString("opendate"));
+				content.setGrade(rs.getString("grade"));
+				content.setImage(rs.getString("image"));
+				tclist.add(content);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			disconnect();
 		}
-		return mlist;
-		
+		return tclist;
 	}
+	
+
 }

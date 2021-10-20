@@ -8,43 +8,79 @@
     <title>Document</title>
     <script src="../jquery/jquery-3.6.0.min.js"></script>
     <script>
-        let mainbtn = document.getElementById(mainbtn);
-        
-        mainbtn.onclick = function() {
-            $.ajax({
-                url:'',
-                dataType: 'json',
-                success: '',
-                error: ''
-            })
-        }
-
-        let tvbtn = document.getElementById(tvbtn);
-        
-        tvbtn.onclick = function() {
-            $.ajax({
-                url:'',
-                dataType: 'json',
-                success: '',
-                error: ''
-            })
-        }
-
-        let moviebtn = document.getElementById(moviebtn);
-        
-        moviebtn.onclick = function() {
-            $.ajax({
-                url:'',
-                dataType: 'json',
-                success: '',
-                error: ''
-            })
-        }
 		
-        function clickEvent(){
-        	
-        }
+    	let divRow = $('<div />').addClass('row');
+    	
+		
+		
+		//main_top컨텐츠 넣어주기
+        $.ajax({
+            url: '../TopContentServlet?topContent=y',
+            data: 'get',
+            dataType: 'json',
+            success: function (result) {
+            	console.log(result);
+            	console.log(result[0].image);
+            	$('#main_top').append(result[0].image);
+            	$('#main_top').append(result[1].image);
+            	$('#main_top').append(result[2].image);
+            	$('#main_top').append(result[3].image);
+            },
+            error: function(reject){
+            	console.log(reject);
+            }
+        })
+        
+        //main_tv 컨텐츠 넣어주기
+            $.ajax({
+            url: '../ContentServlet',
+            data: 'get',
+            dataType: 'json',
+            success: function (result) {
+            	console.log(result);
+            	console.log(result[0].image);
 
+                $('#main_tv').append(result[3].image);
+                $('#main_tv').append(result[4].image);
+                $('#main_tv').append(result[5].image);
+            },
+            error: function(reject){
+            	console.log(reject);
+            }
+        })
+
+        //main_movie 컨텐츠 넣어주기
+            $.ajax({
+            url: '../ContentServlet',
+            data: 'get',
+            dataType: 'json',
+            success: function (result) {
+            	console.log(result);
+            	console.log(result[0].image);
+
+                $('#main_movie').append(result[0].image);
+                $('#main_movie').append(result[1].image);
+                $('#main_movie').append(result[2].image);
+            },
+            error: function(reject){
+            	console.log(reject);
+            }
+        })
+
+        //클릭했을 때 상세화면 띄워주기
+        $(document).ready(function clickEvent() {
+            $("#main").click(function () {
+                $("#main").load("../TopContentServlet?topContent=y")
+            });
+
+            $("#main_tv").click(function () {
+                $("#main_tv").load("../ContentServlet?mOrTv=tv")
+            });
+            $("#main_movie").click(function () {
+                $("#main_movie").load("../ContentServlet?mOrTv=movie")
+            });
+        });
+		
     </script>
 </head>
 
@@ -73,10 +109,12 @@
     <!--Page Content-->
     <!--기본 콘텐츠 슬라이드-->
     <section>
-        <div id="mainbtn1" onclick=clickEvent()>메인1</div>
-        <div id="mainbtn2" onclick=clickEvent()>메인2</div>
-        <div id="mainbtn3" onclick=clickEvent()>메인3</div>
-        <div id="mainbtn4" onclick=clickEvent()>메인4</div>
+        <div id="main_top">
+            <!-- <div id="mainbtn1" >메인1</div>
+	        <div id="mainbtn2" >메인2</div>
+	        <div id="mainbtn3" >메인3</div>
+	        <div id="mainbtn4" >메인4</div> -->
+        </div>
     </section>
 
     <!-- 지금 뜨는 TV-->
@@ -84,10 +122,12 @@
         <div>
             <h3>지금 뜨는 TV</h3>
         </div>
-        <div id="tvbtn1" onclick=clickEvent()>tv1</div>
-        <div id="tvbtn2" onclick=clickEvent()>tv2</div>
-        <div id="tvbtn3" onclick=clickEvent()>tv3</div>
-        <div id="tvbtn4" onclick=clickEvent()>tv4</div>
+        <div id="main_tv">
+            <!--<div id="tvbtn1">tv1</div>
+	        <div id="tvbtn2">tv2</div>
+	        <div id="tvbtn3">tv3</div>
+	        <div id="tvbtn4">tv4</div> -->
+        </div>
     </section>
 
     <!-- 지금 뜨는 영화-->
@@ -95,10 +135,12 @@
         <div>
             <h3>지금 뜨는 영화</h3>
         </div>
-        <div id="moviebtn1" onclick=clickEvent()>영화1</div>
-        <div id="moviebtn2" onclick=clickEvent()>영화2</div>
-        <div id="moviebtn3" onclick=clickEvent()>영화3</div>
-        <div id="moviebtn4" onclick=clickEvent()>영화4</div>
+        <div id="main_movie">
+            <!--<div id="moviebtn1">영화1</div>
+	        <div id="moviebtn2">영화2</div>
+	        <div id="moviebtn3">영화3</div>
+	        <div id="moviebtn4">영화4</div> -->
+        </div>
     </section>
 </body>
 

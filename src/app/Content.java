@@ -1,7 +1,7 @@
 package app;
 
 public class Content {
-	private int code;
+	private String code;
 	private String title;
 	private String actors;
 	private String genre;
@@ -10,10 +10,12 @@ public class Content {
 	private String opendate;
 	private String grade;
 	private String image;
-	public int getCode() {
+	private String topContent;
+	
+	public String getCode() {
 		return code;
 	}
-	public void setCode(int code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 	public String getTitle() {
@@ -64,12 +66,18 @@ public class Content {
 	public void setImage(String image) {
 		this.image = image;
 	}
+	public String getTopContent() {
+		return topContent;
+	}
+	public void setTopContent(String topContent) {
+		this.topContent = topContent;
+	}
 	@Override
 	public String toString() {
 		return "Content [code=" + code + ", title=" + title + ", actors=" + actors + ", genre=" + genre + ", feature="
 				+ feature + ", story=" + story + ", opendate=" + opendate + ", grade=" + grade + ", image=" + image
-				+ "]";
+				+ ", topContent=" + topContent + "]";
 	}
-
+	
 	
 }
