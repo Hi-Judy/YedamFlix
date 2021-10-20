@@ -33,7 +33,7 @@
             let frm = document.getElementById('form');
             let data = new FormData(form);
 
-            //ajax 호출
+            //ajax 호출 - db 연결
             $.ajax({
                 url: '../AddFileServlet',
                 data: $('#form').serialize(),
