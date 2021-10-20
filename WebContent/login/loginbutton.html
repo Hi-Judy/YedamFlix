@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+
+<body>
+
+    <div id="btnLogin">
+        <button type="button" onclick=inout() id="loginbtn">로그인</button>
+    </div>
+
+    <script>
+        function inout() {
+            let loginbtn = document.getElementById('loginbtn');
+            let userid = sessionStorage.getItem('userid');
+            let userpw = sessionStorage.getItem('userpw');
+            console.log(`id : ${userid}, pw : ${userpw}`)
+
+            if(sessionStorage==null) {
+                loginbtn.innerText = "로그인";
+            } else {
+                loginbtn.innerText = "로그아웃";
+                
+                location.href='../main/main3.html';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
