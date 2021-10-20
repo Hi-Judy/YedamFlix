@@ -117,13 +117,13 @@ public class DetailPageServlet2 extends HttpServlet {
 		
 	}
 
-	
-	
 	}
 </script>
 </head>
 <body>
 
+
+확인하기
 <!-- 서블렛에 의해 호출된 jsp파일 -->>
 	<%
 		String code = (String)request.getAttribute("codeObject");
