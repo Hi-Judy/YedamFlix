@@ -5,106 +5,92 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tv페이지</title>
-    <script src = "../jquery/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="main_style.css">
+    <title>Main</title>
+    <script src="../jquery/jquery-3.6.0.min.js"></script>
+    <script>
+        //top 10 movie컨텐츠 넣어주기
+        $.ajax({
+            url: '../TopContentServlet?topContent=y',
+            data: 'get',
+            dataType: 'json',
+            success: function (result) {
+                console.log(result);
+                for (let img of result) {
+                    let imgTag = $('<img />').attr({src : '../images/' + img.image});
+                    let btn = $('<button />').attr({id :img.code, onclick : "location.href='../DetailPageServlet?code='"+img.code}).append(imgTag);
+                    $('#movie_topMV').append(btn.append(imgTag));
+                }
+            },
+            error: function (reject) {
+                console.log(reject);
+            }
+        })
+
+        //movie_mv 지금 뜨는 movie 컨텐츠 넣어주기
+        $.ajax({
+            url: '../ContentServlet?mOrTv=tv',
+            data: 'get',
+            dataType: 'json',
+            success: function (result) {
+                console.log(result);
+
+                for(let img of result){
+                	let imgTag = $('<img />').attr({src : '../images/' + img.image});
+                	let btn = $('<button />').attr({id :img.code, onclick : "location.href='../DetailPageServlet?code='"+img.code}).append(imgTag);
+                    $('#movie_mv').append(btn.append(imgTag));
+                }
+             
+            },
+            error: function (reject) {
+                console.log(reject);
+            }
+        })
+
+
+    </script>
 </head>
 
 <body>
- <!--Navigation 기본 구성-->
+    <!--Navigation 기본 구성-->
     <nav>
         <div id="logo">
             <h1 class="nav_logo">YedamFlix</h1>
         </div>
         <div id="menu">
-        	<form>
-               	<input type='button' value='홈' onclick="location.href='../main/main.html'">
-               	<input type='button' value='TV' onclick ="location.href='../main/tv.html'">
-               	<input type='button' value='영화' onclick ="location.href='../main/movie.html'">
+            <form>
+                <input type='button' value='홈' onclick="location.href='../main/main.html'">
+                <input type='button' value='TV' onclick="location.href='../main/tv.html'">
+                <input type='button' value='영화' onclick="location.href='../main/movie.html'">
             </form>
-         </div>
-	     <div id="btnSearch">
-            <input type='text' class="form-control bg-light border-0 small" placeholder="검색">
-        	<button type="button">검색</button>
         </div>
-          <div id="btnLogin">
+        <div id="btnSearch">
+            <input type='text' class="form-control bg-light border-0 small" placeholder="검색">
+            <button type="button">검색</button>
+        </div>
+        <div id="btnLogin">
             <button type="button" onclick="location.href='../login/login.html'">로그인</button>
         </div>
     </nav>
 
     <!--Page Content-->
+    
+    <!-- 지금 뜨는 TV-->
+    <section>
+        <div>
+            <h3>지금 뜨는 영화</h3>
+        </div>
+        
+        <div id="movie_mv"></div>
+    </section>
 
-        <!--지금 뜨는 영화-->
-        <section>
-            <div>
-                <h3>지금 뜨는 영화 컨텐츠</h3>
-            </div>
-	        <button onclick="document.getElementById('image').style.display='block'" style="width:auto;">
-				<img class = "img-fluid" src="../images/가오갤.jpg" alt="..">
-				<img class = "img-fluid" src="../images/기생충.jpg" alt="..">
-				<img class = "img-fluid" src="../images/라이프.jpg" alt="..">
-				<img class = "img-fluid" src="../images/레미제라블.jpg" alt="..">
-	        </button>
-	        <div id="image" class="model">
-	
-	            <form id="popFrm" action="/action_page.php" method="post" enctype="multipart/form-data" >
-	            	
-	                <div class="imgcontainer">
-	                    <span onclick="document.getElementById('image').style.display='none'" class="close">닫기</span>
-	                </div>
-					
-	                <div class=container>
-	                    <img class="click_img" src="../images/동백.png">
-	                    <div id="test">
-	                    	<table id="tbl" border="1">
-	                    		<tbody>
-	                    			<tr>
-	                    				<!-- <td>동백꽃 필 무렵</td><td>공효진, 강하늘</td><td>로맨스</td><td>가족</td><td>동백이와 용식이</td><td>2019</td><td>15세</td> -->
-	                    			</tr>
-	                    		</tbody>
-	                    	</table>
-	                    </div>
-	                </div>
-	            </form>
-	        </div>
-        </section>
-
-        <!--인생영화 TOP 10-->
-        <section>
-            <div>
-                <h3>인생영화 TOP 10</h3>
-            </div>
-            <button onclick="document.getElementById('image').style.display='block'" style="width:auto;">
-				<img class = "img-fluid" src="../images/리틀 포레스트.jpg" alt="..">
-                <img class = "img-fluid" src="../images/스파이.jpg" alt="..">
-                <img class = "img-fluid" src="../images/어바웃타임.jpg" alt="..">
-                <img class = "img-fluid" src="../images/토이스토리.jpg" alt="..">
-	        </button>
-	        <div id="image" class="model">
-	
-	            <form id="popFrm" action="/action_page.php" method="post" enctype="multipart/form-data" >
-	            	
-	                <div class="imgcontainer">
-	                    <span onclick="document.getElementById('image').style.display='none'" class="close">닫기</span>
-	                </div>
-					
-	                <div class=container>
-	                    <img class="click_img" src="../images/동백.png">
-	                    <div id="test">
-	                    	<table id="tbl" border="1">
-	                    		<tbody>
-	                    			<tr>
-	                    				<!-- <td>동백꽃 필 무렵</td><td>공효진, 강하늘</td><td>로맨스</td><td>가족</td><td>동백이와 용식이</td><td>2019</td><td>15세</td> -->
-	                    			</tr>
-	                    		</tbody>
-	                    	</table>
-	                    </div>
-	                </div>
-	            </form>
-	        </div>
-        </section>
-    <!--Footer-->
-
+    <!-- top10 tv-->
+    <section>
+        <div>
+            <h3>인생영화 top10</h3>
+        </div>
+        
+        <div id="movie_topMV"></div>
+    </section>
 </body>
 
 </html>

@@ -5,10 +5,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tv페이지2</title>
+    <title>Main</title>
     <script src="../jquery/jquery-3.6.0.min.js"></script>
-    <img src="" alt="">
-    
+    <script>
+        //top 10 tv컨텐츠 넣어주기
+        $.ajax({
+            url: '../TopContentServlet?topContent=y',
+            data: 'get',
+            dataType: 'json',
+            success: function (result) {
+                console.log(result);
+                for (let img of result) {
+                    let imgTag = $('<img />').attr({src : '../images/' + img.image});
+                    let btn = $('<button />').attr({id :img.code, onclick : "location.href='../DetailPageServlet?code='"+img.code}).append(imgTag);
+                    $('#tv_topTV').append(btn.append(imgTag));
+                }
+            },
+            error: function (reject) {
+                console.log(reject);
+            }
+        })
+
+        //tv_tv 지금 뜨는 tv 컨텐츠 넣어주기
+        $.ajax({
+            url: '../ContentServlet?mOrTv=tv',
+            data: 'get',
+            dataType: 'json',
+            success: function (result) {
+                console.log(result);
+
+                for(let img of result){
+                	let imgTag = $('<img />').attr({src : '../images/' + img.image});
+                	let btn = $('<button />').attr({id :img.code, onclick : "location.href='../DetailPageServlet?code='"+img.code}).append(imgTag);
+                    $('#main_tv').append(btn.append(imgTag));
+                }
+             
+            },
+            error: function (reject) {
+                console.log(reject);
+            }
+        })
+
+
+    </script>
 </head>
 
 <body>
@@ -29,45 +68,29 @@
             <button type="button">검색</button>
         </div>
         <div id="btnLogin">
-            <button type="button" onclick="location.href='../login/login.html'" >로그인</button>
+            <button type="button" onclick="location.href='../login/login.html'">로그인</button>
         </div>
     </nav>
 
-    <!-- Page Content -->
-
+    <!--Page Content-->
+    
+    <!-- 지금 뜨는 TV-->
     <section>
-        <div id="hot_tv">
+        <div>
             <h3>지금 뜨는 TV</h3>
         </div>
-        <div id="hot"></div>
-        <div id ="top_tv">
-            <h3>인생드라마 TOP 10</h3>
-        </div>
-        <div id="top"></div>
-    </section>
-    
-    <script>  
         
-		$.ajax({
-                url: '../TvinfoServlet2',
-                type: 'get',
-                dataType: 'json',
-                success: function (result) {
-                    console.log(result);
-                    console.log(result[0].image);
+        <div id="tv_tv"></div>
+    </section>
 
-		            $('#hot').append('<img src="result[1].image">');
-		            $('#hot').append(result[1].image);
-		            $('#hot').append(result[2].image);
-		            $('#top').append(result[0].image);
-		            $('#top').append(result[1].image);
-		            $('#top').append(result[2].image);
-                },
-                error: function (reject) {
-                	console.log(reject);
-                }
-            })
-    </script>
+    <!-- top10 tv-->
+    <section>
+        <div>
+            <h3>인생드라마 top10</h3>
+        </div>
+        
+        <div id="tv_topTV"></div>
+    </section>
 </body>
 
 </html>
