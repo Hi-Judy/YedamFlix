@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery/jquery-3.6.0.min.js"></script>
+    <script>
+        let mainbtn = document.getElementById(mainbtn);
+        
+        mainbtn.onclick = function() {
+            $.ajax({
+                url:'',
+                dataType: 'json',
+                success: '',
+                error: ''
+            })
+        }
+
+        let tvbtn = document.getElementById(tvbtn);
+        
+        tvbtn.onclick = function() {
+            $.ajax({
+                url:'',
+                dataType: 'json',
+                success: '',
+                error: ''
+            })
+        }
+
+        let moviebtn = document.getElementById(moviebtn);
+        
+        moviebtn.onclick = function() {
+            $.ajax({
+                url:'',
+                dataType: 'json',
+                success: '',
+                error: ''
+            })
+        }
+		
+        function clickEvent(){
+        	
+        }
+
+    </script>
+</head>
+
+<body>
+    <!--Navigation 기본 구성-->
+    <nav>
+        <div id="logo">
+            <h1 class="nav_logo">YedamFlix</h1>
+        </div>
+        <div id="menu">
+            <form>
+                <input type='button' value='홈' onclick="location.href='../main/main.html'">
+                <input type='button' value='TV' onclick="location.href='../main/tv.html'">
+                <input type='button' value='영화' onclick="location.href='../main/movie.html'">
+            </form>
+        </div>
+        <div id="btnSearch">
+            <input type='text' class="form-control bg-light border-0 small" placeholder="검색">
+            <button type="button">검색</button>
+        </div>
+        <div id="btnLogin">
+            <button type="button" onclick="location.href='../login/login.html'">로그인</button>
+        </div>
+    </nav>
+
+    <!--Page Content-->
+    <!--기본 콘텐츠 슬라이드-->
+    <section>
+        <div id="mainbtn1" onclick=clickEvent()>메인1</div>
+        <div id="mainbtn2" onclick=clickEvent()>메인2</div>
+        <div id="mainbtn3" onclick=clickEvent()>메인3</div>
+        <div id="mainbtn4" onclick=clickEvent()>메인4</div>
+    </section>
+
+    <!-- 지금 뜨는 TV-->
+    <section>
+        <div>
+            <h3>지금 뜨는 TV</h3>
+        </div>
+        <div id="tvbtn1" onclick=clickEvent()>tv1</div>
+        <div id="tvbtn2" onclick=clickEvent()>tv2</div>
+        <div id="tvbtn3" onclick=clickEvent()>tv3</div>
+        <div id="tvbtn4" onclick=clickEvent()>tv4</div>
+    </section>
+
+    <!-- 지금 뜨는 영화-->
+    <section>
+        <div>
+            <h3>지금 뜨는 영화</h3>
+        </div>
+        <div id="moviebtn1" onclick=clickEvent()>영화1</div>
+        <div id="moviebtn2" onclick=clickEvent()>영화2</div>
+        <div id="moviebtn3" onclick=clickEvent()>영화3</div>
+        <div id="moviebtn4" onclick=clickEvent()>영화4</div>
+    </section>
+</body>
+
+</html>
