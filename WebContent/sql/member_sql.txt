@@ -1,6 +1,6 @@
-<2021.10.18 이정민>
+<2021.10.20 이정민 primary key 변경>
 create table ydflix (
-    num number,
+    num number ,
     id VARCHAR2(30) PRIMARY key,
     pw VARCHAR2(30),
     name VARCHAR2(30),
