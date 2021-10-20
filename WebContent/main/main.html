@@ -18,7 +18,6 @@
                 for (let img of result) {
                     let imgTag = $('<img />').attr({src : '../images/' + img.image});
                     let btn = $('<button />').attr({id :img.code, onclick : "location.href='../DetailPageServlet?code='"+img.code}).append(imgTag);
-                    $(btn).click(btnCall)
                     $('#main_top').append(btn.append(imgTag));
                 }
             },
@@ -26,15 +25,6 @@
                 console.log(reject);
             }
         })
-
-        function btnCall() {
-        	 var model = document.getElementById('main_top');
-            window.onclick=function(event){
-            	if(event.target == model){
-            		model.style.display ="none"
-            	}
-            }
-        }
 
         //main_tv 컨텐츠 넣어주기
         $.ajax({
@@ -45,9 +35,8 @@
                 console.log(result);
 
                 for(let img of result){
-                	let imgTag = $('<img />').attr('src', '../images/' + img.image);
-                    let btn = $('<button />').append(imgTag);
-                    $(btn).click(btnCall)
+                	let imgTag = $('<img />').attr({src : '../images/' + img.image});
+                	let btn = $('<button />').attr({id :img.code, onclick : "location.href='../DetailPageServlet?code='"+img.code}).append(imgTag);
                     $('#main_tv').append(btn.append(imgTag));
                 }
              
@@ -66,9 +55,8 @@
                 console.log(result);
 
                 for(let img of result){
-                	let imgTag = $('<img />').attr('src', '../images/' + img.image);
-                    let btn = $('<button />').append(imgTag);
-                    $(btn).click(btnCall)
+                	let imgTag = $('<img />').attr({src : '../images/' + img.image});
+                	let btn = $('<button />').attr({id :img.code, onclick : "location.href='../DetailPageServlet?code='"+img.code}).append(imgTag);
                     $('#main_movie').append(btn.append(imgTag));
                 }
             },
@@ -77,18 +65,6 @@
             }
         })
 
-        //클릭했을 때 상세화면 띄워주기
-        //$(document).ready(function clickEvent() {
-        //    $("#main").click(function (createDiv) {
-        //        $("#main").load("../TopContentServlet?topContent=y")
-        //    });
-        //    $("#main_tv").click(function (createDiv) {
-        //        $("#main_tv").load("../ContentServlet?mOrTv=tv")
-        //    });
-        //    $("#main_movie").click(function () {
-        //        $("#main_movie").load("../ContentServlet?mOrTv=movie")
-        //    });
-        //});
 
     </script>
 </head>
