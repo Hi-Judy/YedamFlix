@@ -63,22 +63,14 @@
                         	console.log(`id : ${userid}, pw : ${userpw}`)
                         }
         				
-                        //location.href='../main/main.html';                      
+                        location.href='../main/main.html';                      
                 	} else {
                 		alert("아이디 또는 비밀번호가 잘못 입력되었습니다.");
                 	}
                 },
                 error: function (reject) {
                     console.log(reject);
-                    alert('로그인오류발생');
-                    sessionStorage.setItem('userid', $('#inputId').val());
-                	sessionStorage.setItem('userpw', $('#inputPw').val());
-                	console.log('userid : ' + $('#inputId').val() + ' userpw : ' +  $('#inputPw').val());
-                	let userid = sessionStorage.getItem('userid');
-                	let userpw = sessionStorage.getItem('userpw');
-                	console.log(`id : ${userid}, pw : ${userpw}`)
-                	
-                	location.href='loginbutton.html';
+
                 }
             });
             
