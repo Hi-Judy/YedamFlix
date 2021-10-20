@@ -4,13 +4,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class YedamFlixDAO extends DAO{
+public class YedamFlixDAO2 extends DAO{
 	
-	private static YedamFlixDAO singleton = new YedamFlixDAO();
+	private static YedamFlixDAO2 singleton = new YedamFlixDAO2();
 	
-	public YedamFlixDAO() {}
+	public YedamFlixDAO2() {}
 	
-	public static YedamFlixDAO getInstance() {
+	public static YedamFlixDAO2 getInstance() {
 		return singleton;
 	}
 	
@@ -49,7 +49,7 @@ public class YedamFlixDAO extends DAO{
 	
 	
 	//상세목록 가져오기
-	public Content getDetailContent(String code){
+	public String getDetailContent(String code){
 		connect();
 		String sql = "select * from content where code=nvl(?, code)";
 		Content content = new Content();
@@ -71,7 +71,7 @@ public class YedamFlixDAO extends DAO{
 				content.setGrade(rs.getString("grade"));
 				content.setImage(rs.getString("image"));
 			}
-			return content;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

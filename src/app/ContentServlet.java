@@ -30,7 +30,7 @@ public class ContentServlet extends HttpServlet {
 		String mOrTv = request.getParameter("mOrTv");
 		System.out.println(mOrTv);
 		
-		YedamFlixDAO dao = new YedamFlixDAO();
+		YedamFlixDAO2 dao = new YedamFlixDAO2();
 		List<Content> clist = dao.getContent(mOrTv);
 				
 		Gson gson = new GsonBuilder().create();
