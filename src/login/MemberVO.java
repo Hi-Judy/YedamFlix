@@ -1,4 +1,4 @@
-package co.yedam.login;
+package login;
 
 public class MemberVO {
 	private int num;

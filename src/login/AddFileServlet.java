@@ -1,8 +1,6 @@
-package app;
+package login;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-@WebServlet("/TvRandomServlet")
-public class TvRandomServlet extends HttpServlet {
+@WebServlet("/AddFileServlet")
+public class AddFileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public TvRandomServlet() {
+    public AddFileServlet() {
         super();
     }
 
@@ -28,15 +26,20 @@ public class TvRandomServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		
-		PrintWriter out = response.getWriter();
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
+		String name = request.getParameter("name");
+		String phoneNb = request.getParameter("phoneNb");
+		String email = request.getParameter("email");
+
+		//System.out.printf(id, pw, name, phoneNb, email);
+		
+		MemberDAO dao = new MemberDAO();
+		MemberVO vo = dao.uploadFile(id, pw, name, phoneNb, email);
+
 		Gson gson = new GsonBuilder().create();
+		response.getWriter().println(gson.toJson(vo));
 		
-		ContentinfoDAO dao = new ContentinfoDAO();
-		List<Content> list = dao.TvRandom();
-		
-		System.out.println(list);
-		
-		out.println(gson.toJson(list));
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 

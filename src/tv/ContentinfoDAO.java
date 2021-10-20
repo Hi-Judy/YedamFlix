@@ -1,8 +1,11 @@
-package app;
+package tv;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import app.Content;
+import app.DAO;
 
 public class ContentinfoDAO extends DAO {
 

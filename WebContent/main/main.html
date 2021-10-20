@@ -46,6 +46,9 @@
 
             }
 
+            function logincheck() {
+            	console.log(`id : ${userid}, pw : ${userpw}`)
+            }
         });
 
         //로그인 화면 연결
@@ -73,7 +76,7 @@
             <button type="button">검색</button>
         </div>
         <div id="btnLogin">
-            <button type="button" onclick="location.href='../login/login.html'">로그인</button>
+            <button type="button" onclick="location.href='../login/login.html'" function="logincheck">로그인</button>
         </div>
     </nav>
 

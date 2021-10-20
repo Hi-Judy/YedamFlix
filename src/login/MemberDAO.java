@@ -1,4 +1,4 @@
-package co.yedam.login;
+package login;
 
 import java.sql.SQLException;
 

@@ -1,4 +1,4 @@
-package app;
+package tv;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import app.Content;
+import app.YedamFlixDAO;
 
 @WebServlet("/DetailContentServlet")
 public class DetailContentServlet extends HttpServlet {

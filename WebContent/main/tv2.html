@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tv페이지2</title>
     <script src="../jquery/jquery-3.6.0.min.js"></script>
+    <img src="" alt="">
+    
 </head>
 
 <body>
@@ -27,63 +29,44 @@
             <button type="button">검색</button>
         </div>
         <div id="btnLogin">
-            <button type="button" onclick="location.href='../login/login.html'">로그인</button>
+            <button type="button" onclick="location.href='../login/login.html'" >로그인</button>
         </div>
     </nav>
 
     <!-- Page Content -->
-    <!-- 지금 뜨는 TV -->
+
     <section>
-        <div>
+        <div id="hot_tv">
             <h3>지금 뜨는 TV</h3>
         </div>
-        <div id="hotTv">
-            <div id="tvbtn1" load="loadtvRandom()" onclick="clickEvent()">tv1</div>
-            <div id="tvbtn2" onclick="clickEvent()">tv2</div>
-            <div id="tvbtn3" onclick="clickEvent()">tv3</div>
-            <div id="tvbtn4" onclick="clickEvent()">tv4</div>
-        </div>
-    </section>
-    
-    <!-- 인생드라마 -->
-    <section>
-        <div>
+        <div id="hot"></div>
+        <div id ="top_tv">
             <h3>인생드라마 TOP 10</h3>
         </div>
-        
-        <div id="tvbtn1" onclick="clickEvent()">tv1</div>
-        <div id="tvbtn2" onclick="clickEvent()">tv2</div>
-        <div id="tvbtn3" onclick="clickEvent()">tv3</div>
-        <div id="tvbtn4" onclick="clickEvent()">tv4</div>
+        <div id="top"></div>
     </section>
+    
+    <script>  
+        
+		$.ajax({
+                url: '../TvinfoServlet2',
+                type: 'get',
+                dataType: 'json',
+                success: function (result) {
+                    console.log(result);
+                    console.log(result[0].image);
 
-    <script>
-    	function loadtvRandom() {
-        $.ajax({
-        	url: '../TvRandomServlet',
-            type: 'get',
-            dataType: 'json',
-            success : function (result) {
-            	console.log(랜덤출력완료);
-            },
-            error : function () {
-            }	
-        })
-    	}
-        function clickEvent() {
-        alert('클릭');
-        $.ajax({
-            url: '../TvRandomServlet',
-            type: 'get',
-            dataType: 'json',
-            success : function (result) {
-            	console.log(result);
-            },
-            error : function () {
-            	
-            }
-        })
-    }
+		            $('#hot').append('<img src="result[1].image">');
+		            $('#hot').append(result[1].image);
+		            $('#hot').append(result[2].image);
+		            $('#top').append(result[0].image);
+		            $('#top').append(result[1].image);
+		            $('#top').append(result[2].image);
+                },
+                error: function (reject) {
+                	console.log(reject);
+                }
+            })
     </script>
 </body>
 
