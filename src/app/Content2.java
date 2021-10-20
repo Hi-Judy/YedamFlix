@@ -1,6 +1,6 @@
 package app;
 
-public class Content {
+public class Content2 {
 	private String code;
 	private String title;
 	private String actors;
@@ -11,12 +11,19 @@ public class Content {
 	private String grade;
 	private String image;
 	private String topContent;
+	private String mOrTv;
 	
+	public String getmOrTv() {
+		return mOrTv;
+	}
+	public void setmOrTv(String mOrTv) {
+		this.mOrTv = mOrTv;
+	}
 	public String getCode() {
 		return code;
 	}
-	public void setCode(String code) {
-		this.code = code;
+	public void setCode(String i) {
+		this.code = i;
 	}
 	public String getTitle() {
 		return title;
@@ -76,8 +83,7 @@ public class Content {
 	public String toString() {
 		return "Content [code=" + code + ", title=" + title + ", actors=" + actors + ", genre=" + genre + ", feature="
 				+ feature + ", story=" + story + ", opendate=" + opendate + ", grade=" + grade + ", image=" + image
-				+ ", topContent=" + topContent + "]";
+				+ ", topContent=" + topContent + ", mOrTv=" + mOrTv + "]";
 	}
-	
-	
 }
+	
