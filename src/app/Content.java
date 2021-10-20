@@ -9,7 +9,15 @@ public class Content {
 	private String story;
 	private String opendate;
 	private String grade;
+	private String mOrTv;
+	public String getmOrTv() {
+		return mOrTv;
+	}
+	public void setmOrTv(String mOrTv) {
+		this.mOrTv = mOrTv;
+	}
 	private String image;
+	
 	public int getCode() {
 		return code;
 	}
@@ -67,9 +75,11 @@ public class Content {
 	@Override
 	public String toString() {
 		return "Content [code=" + code + ", title=" + title + ", actors=" + actors + ", genre=" + genre + ", feature="
-				+ feature + ", story=" + story + ", opendate=" + opendate + ", grade=" + grade + ", image=" + image
-				+ "]";
+				+ feature + ", story=" + story + ", opendate=" + opendate + ", grade=" + grade + ", mOrTv=" + mOrTv
+				+ ", image=" + image + "]";
 	}
+	
+	
 
 	
 }

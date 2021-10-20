@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tv페이지2</title>
+    <script src="../jquery/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <!--Navigation 기본 구성-->
+    <nav>
+        <div id="logo">
+            <h1 class="nav_logo">YedamFlix</h1>
+        </div>
+        <div id="menu">
+            <form>
+                <input type='button' value='홈' onclick="location.href='../main/main.html'">
+                <input type='button' value='TV' onclick="location.href='../main/tv.html'">
+                <input type='button' value='영화' onclick="location.href='../main/movie.html'">
+            </form>
+        </div>
+        <div id="btnSearch">
+            <input type='text' class="form-control bg-light border-0 small" placeholder="검색">
+            <button type="button">검색</button>
+        </div>
+        <div id="btnLogin">
+            <button type="button" onclick="location.href='../login/login.html'">로그인</button>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <!-- 지금 뜨는 TV -->
+    <section>
+        <div>
+            <h3>지금 뜨는 TV</h3>
+        </div>
+        <div id="hotTv">
+            <div id="tvbtn1" load="loadtvRandom()" onclick="clickEvent()">tv1</div>
+            <div id="tvbtn2" onclick="clickEvent()">tv2</div>
+            <div id="tvbtn3" onclick="clickEvent()">tv3</div>
+            <div id="tvbtn4" onclick="clickEvent()">tv4</div>
+        </div>
+    </section>
+    
+    <!-- 인생드라마 -->
+    <section>
+        <div>
+            <h3>인생드라마 TOP 10</h3>
+        </div>
+        
+        <div id="tvbtn1" onclick="clickEvent()">tv1</div>
+        <div id="tvbtn2" onclick="clickEvent()">tv2</div>
+        <div id="tvbtn3" onclick="clickEvent()">tv3</div>
+        <div id="tvbtn4" onclick="clickEvent()">tv4</div>
+    </section>
+
+    <script>
+    	function loadtvRandom() {
+        $.ajax({
+        	url: '../TvRandomServlet',
+            type: 'get',
+            dataType: 'json',
+            success : function (result) {
+            	console.log(랜덤출력완료);
+            },
+            error : function () {
+            }	
+        })
+    	}
+        function clickEvent() {
+        alert('클릭');
+        $.ajax({
+            url: '../TvRandomServlet',
+            type: 'get',
+            dataType: 'json',
+            success : function (result) {
+            	console.log(result);
+            },
+            error : function () {
+            	
+            }
+        })
+    }
+    </script>
+</body>
+
+</html>
