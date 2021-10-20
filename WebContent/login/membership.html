@@ -7,43 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login/membership.html</title>
     <script src="../jquery/jquery-3.6.0.min.js"></script>
-    <style>
-        * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Noto Sans KR", sans-serif;
-    /* background-color: black; */
-}
-    h1 {
-        color: white;
-    }
-
-    form {
-    align-items: center;
-    color: white;
-    }
-    </style>
+    <link rel="stylesheet" href="membership.css">
 </head>
 
-
 <body>
-    <div>
-    <h1>회원가입</h1>
-
-    <form id="form" method="post" onsubmit="submitAction(event)">
-        id: <input type="text" name="id"><br>
-        pw: <input type="text" name="pw"><br>
-        name: <input type="text" name="name"><br>
-        phoneNb: <input type="text" name="phoneNb"><br>
-        email: <input type="email" name="email"><br>
-        <input type="submit" value="회원가입">
-    </form>    
+    <div class="wrap">
+        
+        <form id="form" method="post" onsubmit="submitAction(event)">
+            <h1>회원가입</h1>
+            <div class="new_id">id: <input type="text" name="id"><br></div>
+            <div class="new_pw">pw: <input type="text" name="pw"><br></div>
+            <div class="new_name">name: <input type="text" name="name"><br></div>
+            <div class="new_phoneNb">phoneNb: <input type="text" name="phoneNb"><br></div>
+            <div class="new_email">email: <input type="email" name="email"><br></div>
+            <div class="submit">
+                <input type="submit" value="회원가입">
+            </div>
+        </form>
     </div>
-    
+
 
     <script>
-
         function submitAction(ev) {
             ev.preventDefault();
             let frm = document.getElementById('form');
@@ -54,21 +38,25 @@
                 url: '../AddFileServlet',
                 data: $('#form').serialize(),
                 dataType: 'json',
-                success: function(result) {
+                success: function (result) {
+                	if(result==null) {
+                		alert('생성할 수 없습니다.');
+                	} else {
                     alert('회원가입이 완료되었습니다.');
                     console.log(result);
 
                     $('#form>input').not('[type="submit"]').val('');
 
-                    location.href='login.html';
-                    
+                    location.href = 'login.html';
+                	}
+
                 },
-                error: function() {
+                error: function () {
                     alert('등록되지 않았습니다.');
                 }
 
-                
-                
+
+
             });
         }
     </script>

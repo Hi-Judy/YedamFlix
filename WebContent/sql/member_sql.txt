@@ -1,7 +1,7 @@
 <2021.10.18 이정민>
 create table ydflix (
-    num number,
-    id VARCHAR2(30) PRIMARY key,
+    num number PRIMARY key,
+    id VARCHAR2(30) ,
     pw VARCHAR2(30),
     name VARCHAR2(30),
     phoneNb char(20),
