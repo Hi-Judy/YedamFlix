@@ -9,53 +9,44 @@
     <link rel="stylesheet" href="main_style.css">
     <script src="../jquery/jquery-3.6.0.min.js"></script>
     <script>
-    	window.onload = function(){
-    		popUp();
-    	}
-    	
-    	function popUp(){
-	        var model = document.getElementById('image');
-	        window.onclick = function (event) {
-	            if (event.target == model) {
-	                model.style.display = "none"
-	            };
-    		}
-        }
-        
+        $(document).ready(function () {
+            popUp();
 
-        //TV popup
-        $.ajax({
-            url: '../TvInfoServlet',
-            dataType: 'json',
-            success: showContentInfo()
-            	//성공했을 때 화면에 보여주기
-                //alert('성공');
-                //console.log(result);
-                //$('#img01').append(createDiv(result));
-            
-            ,
-            error: function (reject) {
-                console.log(reject)
+            //TV popup
+            function popUp() {
+                var model = document.getElementById('image');
+                window.onclick = function (event) {
+                    if (event.target == model) {
+                        model.style.display = "none"
+                    };
+                }
             }
-        })
-        
-        
-        //TV 테이블 만들기
-        
-      
-        
-        function showContentInfo(){
-        	var model = document.getElementById('img01');
-	        window.onclick = function (event) {
-	            if (event.target == model) {
-	                model.style.display = "none"
-	            };
-    		}
-        	
-        }
-		
-        //영화화면 연결
 
+            $.ajax({
+                url: '../TvInfoServlet',
+                dataType: 'json',
+                success: showContentInfo
+                    //성공했을 때 화면에 보여주기
+                    //alert('성공');
+                    //console.log(result);
+                    //$('#img01').append(createDiv(result));
+                    ,
+                error: function (reject) {
+                    console.log(reject)
+                }
+            })
+
+            function showContentInfo() {
+                // 순서없이 출력...
+                
+
+                //TV 테이블 만들기
+
+                //영화화면 연결
+
+            }
+
+        });
 
         //로그인 화면 연결
 
@@ -89,30 +80,36 @@
     <!--Page Content-->
     <!--기본 콘텐츠 슬라이드-->
     <section>
-		<button onclick="document.getElementById('image').style.display='block'" style="width:auto;">
-			<img class="image1" src="../images/오징어게임.jpg" alt="..">
+        <button onclick="document.getElementById('image').style.display='block'" style="width:auto;">
+            <img class="image1" src="../images/오징어게임.jpg" alt="..">
             <img class="image2" src="../images/you.jpg" alt="..">
             <img class="image3" src="../images/굿플레이스.jpg" alt="..">
             <img class="image4" src="../images/미생.jpg" alt="..">
         </button>
         <div id="image" class="model">
 
-            <form id="popFrm" action="/action_page.php" method="post" enctype="multipart/form-data" >
-            	
+            <form id="popFrm" action="/action_page.php" method="post" enctype="multipart/form-data">
+
                 <div class="imgcontainer">
                     <span onclick="document.getElementById('image').style.display='none'" class="close">닫기</span>
                 </div>
-				
+
                 <div class=container>
                     <img class="click_img" src="../images/동백.png">
                     <div id="test">
-                    	<table id="tbl" border="1">
-                    		<tbody>
-                    			<tr>
-                    				<!-- <td>동백꽃 필 무렵</td><td>공효진, 강하늘</td><td>로맨스</td><td>가족</td><td>동백이와 용식이</td><td>2019</td><td>15세</td> -->
-                    			</tr>
-                    		</tbody>
-                    	</table>
+                        <table id="tbl" border="1">
+                            <tbody>
+                                <tr>
+                                    <td>동백꽃 필 무렵</td>
+                                    <td>공효진, 강하늘</td>
+                                    <td>로맨스</td>
+                                    <td>가족</td>
+                                    <td>동백이와 용식이</td>
+                                    <td>2019</td>
+                                    <td>15세</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </form>
@@ -126,29 +123,29 @@
             <h3>지금 뜨는 TV 컨텐츠</h3>
         </div>
         <button onclick="document.getElementById('image').style.display='block'" style="width:auto;">
-        	<img class="img-fluid" src="../images/동백.png" alt="..">
-			<img class="img-fluid" src="../images/괜찮아.png" alt="..">
-			<img class="img-fluid" src="../images/모던패밀리.jpg" alt="..">
-			<img class="img-fluid" src="../images/도깨비.jpg" alt="..">
+            <img class="img-fluid" src="../images/동백.png" alt="..">
+            <img class="img-fluid" src="../images/괜찮아.png" alt="..">
+            <img class="img-fluid" src="../images/모던패밀리.jpg" alt="..">
+            <img class="img-fluid" src="../images/도깨비.jpg" alt="..">
         </button>
         <div id="image" class="model">
 
-            <form id="popFrm" action="/action_page.php" method="post" enctype="multipart/form-data" >
-            	
+            <form id="popFrm" action="/action_page.php" method="post" enctype="multipart/form-data">
+
                 <div class="imgcontainer">
                     <span onclick="document.getElementById('image').style.display='none'" class="close">닫기</span>
                 </div>
-				
+
                 <div class=container>
                     <img class="click_img" src="../images/동백.png">
                     <div id="test">
-                    	<table id="tbl" border="1">
-                    		<tbody>
-                    			<tr>
-                    				<!-- <td>동백꽃 필 무렵</td><td>공효진, 강하늘</td><td>로맨스</td><td>가족</td><td>동백이와 용식이</td><td>2019</td><td>15세</td> -->
-                    			</tr>
-                    		</tbody>
-                    	</table>
+                        <table id="tbl" border="1">
+                            <tbody>
+                                <tr>
+                                    <!-- <td>동백꽃 필 무렵</td><td>공효진, 강하늘</td><td>로맨스</td><td>가족</td><td>동백이와 용식이</td><td>2019</td><td>15세</td> -->
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </form>
@@ -161,65 +158,65 @@
             <h3>지금 뜨는 영화 컨텐츠</h3>
         </div>
         <button onclick="document.getElementById('image').style.display='block'" style="width:auto;">
-			<img class = "img-fluid" src="../images/가오갤.jpg" alt="..">
-			<img class = "img-fluid" src="../images/기생충.jpg" alt="..">
-			<img class = "img-fluid" src="../images/라이프.jpg" alt="..">
-			<img class = "img-fluid" src="../images/레미제라블.jpg" alt="..">
+            <img class="img-fluid" src="../images/가오갤.jpg" alt="..">
+            <img class="img-fluid" src="../images/기생충.jpg" alt="..">
+            <img class="img-fluid" src="../images/라이프.jpg" alt="..">
+            <img class="img-fluid" src="../images/레미제라블.jpg" alt="..">
         </button>
         <div id="image" class="model">
 
-            <form id="popFrm" action="/action_page.php" method="post" enctype="multipart/form-data" >
-            	
+            <form id="popFrm" action="/action_page.php" method="post" enctype="multipart/form-data">
+
                 <div class="imgcontainer">
                     <span onclick="document.getElementById('image').style.display='none'" class="close">닫기</span>
                 </div>
-				
+
                 <div class=container>
                     <img class="click_img" src="../images/동백.png">
                     <div id="test">
-                    	<table id="tbl" border="1">
-                    		<tbody>
-                    			<tr>
-                    				<!-- <td>동백꽃 필 무렵</td><td>공효진, 강하늘</td><td>로맨스</td><td>가족</td><td>동백이와 용식이</td><td>2019</td><td>15세</td> -->
-                    			</tr>
-                    		</tbody>
-                    	</table>
+                        <table id="tbl" border="1">
+                            <tbody>
+                                <tr>
+                                    <!-- <td>동백꽃 필 무렵</td><td>공효진, 강하늘</td><td>로맨스</td><td>가족</td><td>동백이와 용식이</td><td>2019</td><td>15세</td> -->
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </form>
         </div>
     </section>
     <!--Footer-->
-	<script>
-	fetch('movie.json')
-    .then(x => x.json())
-    .then(data => createTable(data));
+    <script>
+        fetch('movie.json')
+            .then(x => x.json())
+            .then(data => createTable(data));
 
-	
-	 function createDiv(data){
-     	console.log(data);
-     	
-     	let table = document.createElement('table');
-     	table.setAttribute('border','1');
-     	let tbody = document.createElement('tbody');
-     	table.appendChild(tbody);
-     	
-     	//tbody => tr 만들기
-     	data.forEach(function(obj, idx){
-     		let tr = document.createElement('tr');
-     		let td = document.createElement('td');
-     		
-     		tr.appendChild(td);
-     		for(let field in obj){
-     			let td = document.createElement('td');
-     			td.innerHTML = obj[field];
-     			tr.appendChild(td);
-     		}
-     		tbody.appendChild(tr);
-     	});
-     	document.getElementById('test').appendChild(table);
-	 }
-	</script>
+
+        function createDiv(data) {
+            console.log(data);
+
+            let table = document.createElement('table');
+            table.setAttribute('border', '1');
+            let tbody = document.createElement('tbody');
+            table.appendChild(tbody);
+
+            //tbody => tr 만들기
+            data.forEach(function (obj, idx) {
+                let tr = document.createElement('tr');
+                let td = document.createElement('td');
+
+                tr.appendChild(td);
+                for (let field in obj) {
+                    let td = document.createElement('td');
+                    td.innerHTML = obj[field];
+                    tr.appendChild(td);
+                }
+                tbody.appendChild(tr);
+            });
+            document.getElementById('test').appendChild(table);
+        }
+    </script>
 
 </body>
 

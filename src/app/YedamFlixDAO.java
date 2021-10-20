@@ -14,13 +14,12 @@ public class YedamFlixDAO extends DAO{
 		return singleton;
 	}
 	//tv 목록 가져오기
-	public List<TV> getTvList(String tvCode){
+	public TV getTvList(String mOrTv){
 		connect();
-		List<TV> tlist = new ArrayList<>();
-		String sql = "select tvtitle, actors, genre, feature, story, opendate, grade from tv where tvCode=?";
+		String sql = "select * from content where mOrTv=?";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1,tvCode);
+			psmt.setString(1,mOrTv);
 			rs=psmt.executeQuery();
 			
 			if(rs.next()) {
@@ -32,15 +31,15 @@ public class YedamFlixDAO extends DAO{
 				tv.settStoty(rs.getString("story"));
 				tv.settOpendate(rs.getString("opendate"));
 				tv.settGrade(rs.getString("grade"));
-				
-				tlist.add(tv);
+				tv.
+				return tv;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			disconnect();
 		}
-		return tlist;
+		return null;
 	}
 	
 	//영화 목록 가져오기

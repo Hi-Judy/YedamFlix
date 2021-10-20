@@ -1,40 +1,27 @@
-<2021.10.18 최주희>
-Drop table tv;
-Create table tv(
-tvCode number primary key,
-tvtitle varchar2(200),
+Drop table content;
+Create table content(
+code number,
+title varchar2(200),
 actors varchar2(500),
 genre varchar2(100),
 feature varchar2(500),
 story varchar2(1000),
 opendate varchar2(100),
-grade varchar2(10)
+grade varchar2(10),
+mOrTv varchar2(10),
+image varchar2(500)
 );
 
-Drop table movie;
-Create table movie(
-mvCode number primary key,
-mvtitle varchar2(200),
-actors varchar2(500),
-genre varchar2(100),
-feature varchar2(500),
-story varchar2(1000),
-opendate varchar2(100),
-grade varchar2(10)
-);
+insert into content values ('1','동백꽃 필 무렵','공효진, 강하늘','로맨스','가족','동백이와 용식이','2019', '15세','tv','도깨비.jpg');
+insert into content values ('2','도깨비','김고은, 공유','로맨스','판타지','도깨비 살리기','2018', '15세','tv','동백.png');
+insert into content values ('3','펜트하우스','이지아, 주단태','사회','막장','권선징악','2021', '19세','tv','굿플레이스.jpg');
 
-select*from tv;
-select*from movie;
-
-insert into tv values ('1','동백꽃 필 무렵','공효진, 강하늘','로맨스','가족','동백이와 용식이','2019', '15세');
-insert into tv values ('2','도깨비','김고은, 공유','로맨스','판타지','도깨비 살리기','2018', '15세');
-insert into tv values ('3','펜트하우스','이지아, 주단태','사회','막장','권선징악','2021', '19세');
-
-insert into movie values ('1','모가디슈','조인성, 김윤석','사회','아프리카','모가디슈 탈출','2021', '12세');
-insert into movie values ('2','기생충','송강호, 이선균','사회','빈익빈부익부','기생충가족','2020', '15세');
-insert into movie values ('3','라푼젤','라푼젤, 유진','애니메이션','디즈니','라푼젤의 삶','2013', '전체');
+insert into content values ('4','모가디슈','조인성, 김윤석','사회','아프리카','모가디슈 탈출','2021', '12세','movie','어바웃타임.jpg');
+insert into content values ('5','기생충','송강호, 이선균','사회','빈익빈부익부','기생충가족','2020', '15세','movie','토이스토리.jpg');
+insert into content values ('6','라푼젤','라푼젤, 유진','애니메이션','디즈니','라푼젤의 삶','2013', '전체','movie','가오갤.jpg');
 
 commit;
-
-select*from tv order by 1;
-select*from movie order by 1;
+select * from content where mOrTv='tv'; 
+select * from content where mOrTv='movie'; 
+select * from content where rownum<5;
+select * from content;

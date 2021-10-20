@@ -32,9 +32,9 @@ public class TvInfoServlet extends HttpServlet {
 		
 		String tvCode = request.getParameter("getTvList");
 		YedamFlixDAO dao = new YedamFlixDAO();
-		boolean tlist = dao.getTvList(tvCode);
+		TV tv = dao.getTvList(tvCode);
 		
-		out.println(gson.toJson(tlist));
+		out.println(gson.toJson(tv));
 		
 		
 	}
