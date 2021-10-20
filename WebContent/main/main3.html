@@ -9,10 +9,6 @@
     <script src="../jquery/jquery-3.6.0.min.js"></script>
     <script>
 		
-    	let divRow = $('<div />').addClass('row');
-    	
-		
-		
 		//main_top컨텐츠 넣어주기
         $.ajax({
             url: '../TopContentServlet?topContent=y',
@@ -80,6 +76,12 @@
                 $("#main_movie").load("../ContentServlet?mOrTv=movie")
             });
         });
+		
+		//클릭했을 때 나오는 상세 태그 만들어주기
+		function createDiv(){
+			let title = document.createElement("title").innerHTML(title);
+			$("#main").after(title);
+		}
 		
     </script>
 </head>

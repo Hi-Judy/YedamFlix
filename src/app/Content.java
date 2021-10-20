@@ -1,6 +1,6 @@
 package app;
 
-public class Content2 {
+public class Content {
 	private String code;
 	private String title;
 	private String actors;
