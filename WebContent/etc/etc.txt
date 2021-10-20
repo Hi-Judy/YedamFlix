@@ -1,1 +1,16 @@
-영화 API 사이트 http://www.kobis.or.kr/kobisopenapi/homepg/main/main.do
+detailPage.jsp?movie=35
+<%
+ String movieId = request.getParamter("movie");
+%>
+
+<script>
+let id = '<%=movieId%>';
+
+$.ajax({
+success:function(result) {
+document.getElementById('id') =  result.movieId;
+}
+});
+
+
+</script>

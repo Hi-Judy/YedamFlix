@@ -8,81 +8,93 @@
     <title>Document</title>
     <script src="../jquery/jquery-3.6.0.min.js"></script>
     <script>
-		
-		//main_top컨텐츠 넣어주기
+        //main_top컨텐츠 넣어주기
         $.ajax({
             url: '../TopContentServlet?topContent=y',
             data: 'get',
             dataType: 'json',
             success: function (result) {
-            	console.log(result);
-            	console.log(result[0].image);
-            	$('#main_top').append(result[0].image);
-            	$('#main_top').append(result[1].image);
-            	$('#main_top').append(result[2].image);
-            	$('#main_top').append(result[3].image);
+                console.log(result);
+                for (let img of result) {
+                    let imgTag = $('<img />').attr('src', '../images/' + img.image);
+                    let btn = $('<button />').append(imgTag);
+                    $(btn).click(btnCall)
+                    $('#main_top').append(btn.append(imgTag));
+                }
             },
-            error: function(reject){
-            	console.log(reject);
+            error: function (reject) {
+                console.log(reject);
             }
         })
-        
+
+        function btnCall() {
+        	 var model = document.getElementById('main_top');
+            window.onclick=function(event){
+            	if(event.target == model){
+            		model.style.display ="none"
+            	}
+            }
+        }
+
         //main_tv 컨텐츠 넣어주기
-            $.ajax({
+        $.ajax({
             url: '../ContentServlet',
             data: 'get',
             dataType: 'json',
             success: function (result) {
-            	console.log(result);
-            	console.log(result[0].image);
+                console.log(result);
+                console.log(result[0].image);
 
                 $('#main_tv').append(result[3].image);
                 $('#main_tv').append(result[4].image);
                 $('#main_tv').append(result[5].image);
             },
-            error: function(reject){
-            	console.log(reject);
+            error: function (reject) {
+                console.log(reject);
             }
         })
 
         //main_movie 컨텐츠 넣어주기
-            $.ajax({
+        $.ajax({
             url: '../ContentServlet',
             data: 'get',
             dataType: 'json',
             success: function (result) {
-            	console.log(result);
-            	console.log(result[0].image);
+                console.log(result);
+                console.log(result[0].image);
 
                 $('#main_movie').append(result[0].image);
                 $('#main_movie').append(result[1].image);
                 $('#main_movie').append(result[2].image);
             },
-            error: function(reject){
-            	console.log(reject);
+            error: function (reject) {
+                console.log(reject);
             }
         })
 
         //클릭했을 때 상세화면 띄워주기
         $(document).ready(function clickEvent() {
-            $("#main").click(function () {
-                $("#main").load("../TopContentServlet?topContent=y")
+            $("#main").click(function (createDiv) {
+                //$("#main").load("../TopContentServlet?topContent=y")
             });
 
-            $("#main_tv").click(function () {
-                $("#main_tv").load("../ContentServlet?mOrTv=tv")
+            $("#main_tv").click(function (createDiv) {
+                //$("#main_tv").load("../ContentServlet?mOrTv=tv")
             });
             $("#main_movie").click(function () {
                 $("#main_movie").load("../ContentServlet?mOrTv=movie")
             });
         });
-		
-		//클릭했을 때 나오는 상세 태그 만들어주기
-		function createDiv(){
-			let title = document.createElement("title").innerHTML(title);
-			$("#main").after(title);
-		}
-		
+
+        //클릭했을 때 나오는 상세 태그 만들어주기
+        function createDiv() {
+            var main1 = $("<div>메인1</div>");
+            var main2 = $("<div>메인2</div>");
+            var main3 = $("<div>메인3</div>");
+            var main4 = $("<div>메인4</div>");
+
+            $("#main").append(main1, main2, main3, main4);
+        }
     </script>
 </head>
 
@@ -111,7 +123,7 @@
     <!--Page Content-->
     <!--기본 콘텐츠 슬라이드-->
     <section>
-        <div id="main_top">
+        <div id="main_top" class="model">
             <!-- <div id="mainbtn1" >메인1</div>
 	        <div id="mainbtn2" >메인2</div>
 	        <div id="mainbtn3" >메인3</div>
