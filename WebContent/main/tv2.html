@@ -37,7 +37,7 @@
                 for(let img of result){
                 	let imgTag = $('<img />').attr({src : '../images/' + img.image});
                 	let btn = $('<button />').attr({id :img.code, onclick : "location.href='../DetailPageServlet?code='"+img.code}).append(imgTag);
-                    $('#main_tv').append(btn.append(imgTag));
+                    $('#tv_tv').append(btn.append(imgTag));
                 }
              
             },

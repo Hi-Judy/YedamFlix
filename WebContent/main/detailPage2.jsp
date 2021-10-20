@@ -18,7 +18,7 @@
 	
 	function clickPage(){
 		$.ajax({
-			url: '../DetailPageServlet',
+			url: '../DetailPageServlet2',
 			type: 'post',
 			data: {code: <%=code%>},
 			dataType: 'json',
