@@ -8,7 +8,7 @@
     <title>Main</title>
     <script src="../jquery/jquery-3.6.0.min.js"></script>
     <script>
-        //top 10 movie컨텐츠 넣어주기
+        //main_top컨텐츠 넣어주기
         $.ajax({
             url: '../TopContentServlet?topContent=y',
             data: 'get',
@@ -18,7 +18,7 @@
                 for (let img of result) {
                     let imgTag = $('<img />').attr({src : '../images/' + img.image});
                     let btn = $('<button />').attr({id :img.code, onclick : "location.href='../DetailPageServlet?code='"+img.code}).append(imgTag);
-                    $('#movie_topMV').append(btn.append(imgTag));
+                    $('#main_top').append(btn.append(imgTag));
                 }
             },
             error: function (reject) {
@@ -26,7 +26,7 @@
             }
         })
 
-        //movie_mv 지금 뜨는 movie 컨텐츠 넣어주기
+        //main_tv 컨텐츠 넣어주기
         $.ajax({
             url: '../ContentServlet?mOrTv=tv',
             data: 'get',
@@ -37,9 +37,28 @@
                 for(let img of result){
                 	let imgTag = $('<img />').attr({src : '../images/' + img.image});
                 	let btn = $('<button />').attr({id :img.code, onclick : "location.href='../DetailPageServlet?code='"+img.code}).append(imgTag);
-                    $('#movie_mv').append(btn.append(imgTag));
+                    $('#main_tv').append(btn.append(imgTag));
                 }
              
+            },
+            error: function (reject) {
+                console.log(reject);
+            }
+        })
+
+        //main_movie 컨텐츠 넣어주기
+        $.ajax({
+            url: '../ContentServlet?mOrTv=movie',
+            data: 'get',
+            dataType: 'json',
+            success: function (result) {
+                console.log(result);
+
+                for(let img of result){
+                	let imgTag = $('<img />').attr({src : '../images/' + img.image});
+                	let btn = $('<button />').attr({id :img.code, onclick : "location.href='../DetailPageServlet?code='"+img.code}).append(imgTag);
+                    $('#main_movie').append(btn.append(imgTag));
+                }
             },
             error: function (reject) {
                 console.log(reject);
@@ -59,7 +78,7 @@
         <div id="menu">
             <form>
                 <input type='button' value='홈' onclick="location.href='../main/main.html'">
-                <input type='button' value='TV' onclick="location.href='../main/tv.html'">
+                <input type='button' value='TV' onclick="location.href='../main/tv2.html'">
                 <input type='button' value='영화' onclick="location.href='../main/movie.html'">
             </form>
         </div>
@@ -73,23 +92,27 @@
     </nav>
 
     <!--Page Content-->
-    
+    <!--기본 콘텐츠 슬라이드-->
+    <section>
+        <div id="main_top" class="model"></div>
+    </section>
+
     <!-- 지금 뜨는 TV-->
+    <section>
+        <div>
+            <h3>지금 뜨는 TV</h3>
+        </div>
+        
+        <div id="main_tv"></div>
+    </section>
+
+    <!-- 지금 뜨는 영화-->
     <section>
         <div>
             <h3>지금 뜨는 영화</h3>
         </div>
         
-        <div id="movie_mv"></div>
-    </section>
-
-    <!-- top10 tv-->
-    <section>
-        <div>
-            <h3>인생영화 top10</h3>
-        </div>
-        
-        <div id="movie_topMV"></div>
+        <div id="main_movie"></div>
     </section>
 </body>
 

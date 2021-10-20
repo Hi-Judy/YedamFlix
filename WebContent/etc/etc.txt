@@ -14,3 +14,127 @@ document.getElementById('id') =  result.movieId;
 
 
 </script>
+
+
+<주희. detailPageServlet>
+package app;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URLDecoder;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+@WebServlet("/DetailPageServlet")
+public class DetailPageServlet2 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public DetailPageServlet2() {
+        super();
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
+		//서블릿에서 데이터를 jsp로 보내기
+		String code = request.getParameter("code");
+		request.setAttribute("codeObject", code);
+		RequestDispatcher rd = request.getRequestDispatcher("detailPage.jsp");
+		rd.forward(request, response);
+		
+		YedamFlixDAO dao = new YedamFlixDAO();
+		Content content = dao.getDetailContent(code);
+		
+		Gson gson = new GsonBuilder().create();
+		response.getWriter().println(gson.toJson(content));
+
+		//서블릿을 통한 jsp 호출
+		//RequestDispatcher rd = request.getRequestDispatcher("detailPage.jsp");
+		//rd.forward(request, response); //forward란 servlet이 jsp에 위임하는 것
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		doGet(request, response);
+
+	}
+
+}
+
+
+<주희. detailPage.jsp>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>DetailPage</title>
+<script src="../jquery/jquery-3.6.0.min.js"></script>
+
+<script>
+	<%
+		String detail_code = request.getParameter("code");
+	%>
+	
+	window.onload = function(){
+		detailPageLoad()
+	}
+	
+	function detailPageLoad(){
+		$.ajax({
+			url: '../DetailPageServlet',
+			type: 'get',
+			data: {code: "<%=detail_code%>"},
+			dataType: 'json',
+			success: function(result){
+				image.setAttribute('src', '../images/' +result.image);
+				document.getElementById('title').value = result.title;
+				document.getElementById('actors').value = result.actors;
+				document.getElementById('genre').value = result.genre;
+				document.getElementById('feature').value = result.feature;
+				document.getElementById('story').value = result.story;
+				
+				console.log(result);
+			},
+			error: function(reject){
+				window.alert(오류);
+			}
+			
+		});
+		
+	}
+
+	}
+</script>
+</head>
+<body>
+
+
+확인하기
+<!-- 서블렛에 의해 호출된 jsp파일 -->>
+	<%
+		String code = (String)request.getAttribute("codeObject");
+		out.println("테스트"+code);
+	%>
+	<div id ="title"><h3>제목</h3></div>
+	<div id ="actors"><h3>출연진</h3></div>
+	<div id ="genre"><h3>장르</h3></div>
+	<div id ="feature"><h3>특징</h3></div>
+	<div id ="story"><h3>줄거리</h3></div>
+	
+
+</body>
+</html>
