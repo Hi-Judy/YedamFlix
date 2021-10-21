@@ -66,13 +66,12 @@
 <!--Navigation 기본 구성-->
     <nav>
         <div id="logo">
-            <h1 class="nav_logo">YedamFlix</h1>
+        <input id ="logo_btn" type='button' value='YedamFlix' onclick="location.href='../main/main.html'">
         </div>
         <div id="menu">
             <form>
-                <input type='button' value='홈' onclick="location.href='../main/main.html'">
-                <input type='button' value='TV' onclick="location.href='../main/tv.html'">
-                <input type='button' value='영화' onclick="location.href='../main/movie.html'">
+                <input id ="input2" type='button' value='TV' onclick="location.href='../main/tv.html'">
+                <input id ="input3" type='button' value='영화' onclick="location.href='../main/movie.html'">
             </form>
         </div>
         <div id="btnLogin">
