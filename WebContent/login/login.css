@@ -99,6 +99,7 @@ h1 {
     font-weight: bold;
     color: white;
 }
+
 #logo_btn{
 	color: red;
 	background-color: gray;
@@ -108,5 +109,4 @@ h1 {
     font-weight: bolder;
     border: none;
     outline: none;
-
 }
