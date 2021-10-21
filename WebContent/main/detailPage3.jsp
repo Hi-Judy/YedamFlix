@@ -26,7 +26,6 @@
 			success: function(result){
 				<%=request.getAttribute("content") %> 
 				console.log(result);
-			
 			}
 		})
 	}

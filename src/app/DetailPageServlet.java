@@ -1,6 +1,10 @@
 package app;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URLDecoder;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,25 +29,27 @@ public class DetailPageServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		Gson gson = new GsonBuilder().create();
-		
-		YedamFlixDAO dao = new YedamFlixDAO();
 		String code = request.getParameter("code");
 		
-		System.out.println(code);
+		YedamFlixDAO dao = new YedamFlixDAO();
+		Content content = dao.getDetailContent(code);
 		
-		String content = dao.getDetailContent(code);
-		
-		System.out.println(content);
-		
+		Gson gson = new GsonBuilder().create();
 		response.getWriter().println(gson.toJson(content));
-		
-		request.setAttribute("content", content);
+
+		request.setAttribute("codeObject", code);
+		//서블릿을 통한 jsp 호출
+		//RequestDispatcher rd = request.getRequestDispatcher("detailPage.jsp");
+		//rd.forward(request, response); //forward란 servlet이 jsp에 위임하는 것
+		//서블릿에서 데이터를 jsp로 보내기
+//		RequestDispatcher rd = request.getRequestDispatcher("detailPage.jsp");
+//		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		doGet(request, response);
+
 	}
 
 }

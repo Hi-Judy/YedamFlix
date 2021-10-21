@@ -49,7 +49,7 @@ public class YedamFlixDAO extends DAO{
 	
 	
 	//상세목록 가져오기
-	public String getDetailContent(String code){
+	public Content getDetailContent(String code){
 		connect();
 		String sql = "select * from content where code=nvl(?, code)";
 		Content content = new Content();
@@ -71,7 +71,7 @@ public class YedamFlixDAO extends DAO{
 				content.setGrade(rs.getString("grade"));
 				content.setImage(rs.getString("image"));
 			}
-			
+			return content;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

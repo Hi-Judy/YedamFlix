@@ -23,7 +23,7 @@
 			data: {code: "<%=detail_code%>"},
 			dataType: 'json',
 			success: function(result){
-				image.setAttribute('src', '../images/' +result.image);
+				//image.setAttribute('src', '../images/' +result.image);
 				document.getElementById('title').value = result.title;
 				document.getElementById('actors').value = result.actors;
 				document.getElementById('genre').value = result.genre;
