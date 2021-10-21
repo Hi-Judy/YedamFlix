@@ -3,54 +3,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>DetailPage</title>
+<meta charset="UTF-8">
+<title>DetailPage</title>
 <script src="../jquery/jquery-3.6.0.min.js"></script>
 
 <script>
 	<%
-		String detail_code = request.getParameter("code");
+		String code = request.getParameter("code");
+		
 	%>
-	
+	console.log(<%=code%>);
 	window.onload = function(){
-		detailPageLoad()
+		clickPage();
 	}
 	
-	function detailPageLoad(){
+	function clickPage(){
 		$.ajax({
 			url: '../DetailPageServlet',
 			type: 'get',
-			data: {code: "<%=detail_code%>"},
+			data: {code: <%=code%>},
 			dataType: 'json',
 			success: function(result){
-				//image.setAttribute('src', '../images/' +result.image);
-				document.getElementById('title').value = result.title;
-				document.getElementById('actors').value = result.actors;
-				document.getElementById('genre').value = result.genre;
-				document.getElementById('feature').value = result.feature;
-				document.getElementById('story').value = result.story;
-				
+				<%=request.getAttribute("content") %> 
 				console.log(result);
-			},
-			error: function(reject){
-				window.alert(오류);
+				console.log(result.actors);
+				$("#title").append(result.title);
+				$("#actors").append(result.actors);
+				$("#genre").append(result.genre);
+				$("#feature").append(result.feature);
+				$("#story").append(result.story);
+				
+				
 			}
-			
-		});
-		
-	}
-
-	
-	
+		})
 	}
 </script>
 </head>
 <body>
-
 <!-- 서블렛에 의해 호출된 jsp파일 -->>
 	<%
-		String code = (String)request.getAttribute("codeObject");
-		out.println("테스트"+code);
+		String codeOb = (String)request.getAttribute("codeObject");
+		out.println("테스트");
 	%>
 	<div id ="title"><h3>제목</h3></div>
 	<div id ="actors"><h3>출연진</h3></div>
@@ -58,6 +51,5 @@
 	<div id ="feature"><h3>특징</h3></div>
 	<div id ="story"><h3>줄거리</h3></div>
 	
-
 </body>
 </html>

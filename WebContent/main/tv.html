@@ -17,7 +17,7 @@
                 console.log(result);
                 for (let img of result) {
                     let imgTag = $('<img />').attr({src : '../images/' + img.image});
-                    let btn = $('<button />').attr({id :img.code, onclick : "location.href='../DetailPageServlet?code='"+img.code}).append(imgTag);
+                    let btn = $('<button />').attr({id :img.code, onclick : "location.href='detailPage.jsp?code="+img.code+"'"}).append(imgTag);
                     $('#tv_topTV').append(btn.append(imgTag));
                 }
             },
@@ -36,8 +36,8 @@
 
                 for(let img of result){
                 	let imgTag = $('<img />').attr({src : '../images/' + img.image});
-                	let btn = $('<button />').attr({id :img.code, onclick : "location.href='../DetailPageServlet?code='"+img.code}).append(imgTag);
-                    $('#tv_tv').append(btn.append(imgTag));
+                	let btn = $('<button />').attr({id :img.code, onclick : "location.href='detailPage.jsp?code="+img.code+"'"}).append(imgTag);
+                	$('#tv_tv').append(btn.append(imgTag));
                 }
              
             },
