@@ -15,8 +15,8 @@
 }
 
 .login {
-    width: 300px;
-    height: 400px;
+    width: 500px;
+    height: 800px;
     background: gray;
     border-radius: 20px;
     display: flex;
@@ -27,24 +27,28 @@
 
 h1 {
     color: white;
-    font-size: 35px;
+    font-size: 50px;
     font-weight: bolder;
 }
 
 .login_id>input {
-    width: 200px;
-    height: 40px;
+    width: 300px;
+    height: 50px;
     border-radius: 5px;
     margin-top: 5px;
     border: 1px solid lightgray;
     text-align: left;
     float: right;
-
+}
+#pwicon{
+    position: absolute;
+    top: 50%;
+    left: 23%;
 }
 
 .login_pw>input {
-    width: 200px;
-    height: 40px;
+    width: 300px;
+    height: 50px;
     border-radius: 5px;
     margin-top: 5px;
     border: 1px solid lightgray;
@@ -53,7 +57,7 @@ h1 {
 }
 button {
     margin-top: 20px;
-
+    outline: red;
     padding: 5px;
     width: 100px;
     height: 50px;
@@ -66,11 +70,10 @@ button {
 .login_re {
     padding: 10px;
     width: 80%;
-    font-size: 14px;
+    font-size: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-weight: bold;
     color: white;
 }
-

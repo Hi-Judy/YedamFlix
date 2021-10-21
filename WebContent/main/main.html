@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main</title>
     <script src="../jquery/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="main.css">
     <script>
         //main_top컨텐츠 넣어주기
         $.ajax({
@@ -92,13 +93,12 @@
     <!--Navigation 기본 구성-->
     <nav>
         <div id="logo">
-            <h1 class="nav_logo">YedamFlix</h1>
+        <input id ="logo_btn" type='button' value='YedamFlix' onclick="location.href='../main/main.html'">
         </div>
         <div id="menu">
             <form>
-                <input type='button' value='홈' onclick="location.href='../main/main.html'">
-                <input type='button' value='TV' onclick="location.href='../main/tv.html'">
-                <input type='button' value='영화' onclick="location.href='../main/movie.html'">
+                <input id ="input2" type='button' value='TV' onclick="location.href='../main/tv.html'">
+                <input id ="input3" type='button' value='영화' onclick="location.href='../main/movie.html'">
             </form>
         </div>
         <div id="btnLogin">
@@ -115,7 +115,7 @@
     <!-- top TV-->
     <section>
         <div>
-            <h3>인생드라마 top10</h3>
+            <h1 id="main_tvT">인생드라마 추천</h1>
         </div>
         
         <div id="main_tv"></div>
@@ -124,7 +124,7 @@
     <!-- top 영화-->
     <section>
         <div>
-            <h3>인생영화 top10</h3>
+            <h1 id="main_movieT">인생영화 추천</h1>
         </div>
         
         <div id="main_movie"></div>
