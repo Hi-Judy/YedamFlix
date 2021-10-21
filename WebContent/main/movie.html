@@ -17,7 +17,7 @@
                 console.log(result);
                 for (let img of result) {
                     let imgTag = $('<img />').attr({src : '../images/' + img.image});
-                    let btn = $('<button />').attr({id :img.code, onclick : "location.href='../DetailPageServlet?code='"+img.code}).append(imgTag);
+                    let btn = $('<button />').attr({id :img.code, onclick : "location.href='detailPage.jsp?code="+img.code+"'"}).append(imgTag);
                     $('#movie_topMV').append(btn.append(imgTag));
                 }
             },
@@ -36,8 +36,8 @@
 
                 for(let img of result){
                 	let imgTag = $('<img />').attr({src : '../images/' + img.image});
-                	let btn = $('<button />').attr({id :img.code, onclick : "location.href='../DetailPageServlet?code='"+img.code}).append(imgTag);
-                    $('#movie_mv').append(btn.append(imgTag));
+                	let btn = $('<button />').attr({id :img.code, onclick : "location.href='detailPage.jsp?code="+img.code+"'"}).append(imgTag);
+                	$('#movie_mv').append(btn.append(imgTag));
                 }
              
             },
@@ -46,7 +46,26 @@
             }
         })
 
+		function inout() {
+            let loginbtn = document.getElementById('loginbtn');
+            let userid = sessionStorage.getItem('userid');
+            let userpw = sessionStorage.getItem('userpw');
+            console.log(`id : ${userid}, pw : ${userpw}`)
 
+            if(userid==null && userpw==null) {
+                loginbtn.innerText = "로그인";
+                console.log('로그인');
+                console.log(`id : ${userid}, pw : ${userpw}`);
+                location.href='../login/login.html';
+            } else{
+            	sessionStorage.removeItem('userid');
+            	sessionStorage.removeItem('userpw');
+            	
+            	alert('로그아웃');
+            	location.reload();
+            }
+        }
+        
     </script>
 </head>
 
@@ -63,12 +82,8 @@
                 <input type='button' value='영화' onclick="location.href='../main/movie.html'">
             </form>
         </div>
-        <div id="btnSearch">
-            <input type='text' class="form-control bg-light border-0 small" placeholder="검색">
-            <button type="button">검색</button>
-        </div>
         <div id="btnLogin">
-            <button type="button" onclick="location.href='../login/login.html'">로그인</button>
+            <button type="button" onclick=inout() id="loginbtn">로그인</button>
         </div>
     </nav>
 
@@ -91,6 +106,26 @@
         
         <div id="movie_topMV"></div>
     </section>
+    
+    <script>
+    (function sessionCheck() {
+    	let loginbtn = document.getElementById('loginbtn');
+        let userid = sessionStorage.getItem('userid');
+        let userpw = sessionStorage.getItem('userpw');
+        console.log(`id : ${userid}, pw : ${userpw}`)
+        
+        if(userid==null && userpw==null) {
+            loginbtn.innerText = "로그인";
+            console.log('로그인');
+            console.log(`id : ${userid}, pw : ${userpw}`);
+        } else {
+            loginbtn.innerText = "로그아웃";
+            console.log('로그아웃');
+            console.log(`id : ${userid}, pw : ${userpw}`);
+            //location.href='main.html'
+    }
+    }());
+    </script>
 </body>
 
 </html>

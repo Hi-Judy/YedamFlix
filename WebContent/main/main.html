@@ -17,7 +17,7 @@
                 console.log(result);
                 for (let img of result) {
                     let imgTag = $('<img />').attr({src : '../images/' + img.image});
-                    let btn = $('<button />').attr({id :img.code, onclick : "location.href='detailPage3.jsp?code="+img.code+"'"}).append(imgTag);
+                    let btn = $('<button />').attr({id :img.code, onclick : "location.href='detailPage.jsp?code="+img.code+"'"}).append(imgTag);
                     $('#main_top').append(btn.append(imgTag));
                 }
             },
@@ -36,7 +36,7 @@
 
                 for(let img of result){
                 	let imgTag = $('<img />').attr({src : '../images/' + img.image});
-                	let btn = $('<button />').attr({id :img.code, onclick : "location.href='../DetailPageServlet?code='"+img.code}).append(imgTag);
+                	let btn = $('<button />').attr({id :img.code, onclick : "location.href='detailPage.jsp?code="+img.code+"'"}).append(imgTag);
                     $('#main_tv').append(btn.append(imgTag));
                 }
              
@@ -56,8 +56,8 @@
 
                 for(let img of result){
                 	let imgTag = $('<img />').attr({src : '../images/' + img.image});
-                	let btn = $('<button />').attr({id :img.code, onclick : "location.href='../DetailPageServlet?code='"+img.code}).append(imgTag);
-                    $('#main_movie').append(btn.append(imgTag));
+                	let btn = $('<button />').attr({id :img.code, onclick : "location.href='detailPage.jsp?code="+img.code+"'"}).append(imgTag);
+                	$('#main_movie').append(btn.append(imgTag));
                 }
             },
             error: function (reject) {
@@ -65,7 +65,7 @@
             }
         })
 
-        	function inout() {
+         function inout() {
             let loginbtn = document.getElementById('loginbtn');
             let userid = sessionStorage.getItem('userid');
             let userpw = sessionStorage.getItem('userpw');
@@ -84,7 +84,6 @@
             	location.reload();
             }
         }
-        
 
     </script>
 </head>
@@ -102,13 +101,9 @@
                 <input type='button' value='영화' onclick="location.href='../main/movie.html'">
             </form>
         </div>
-        <div id="btnSearch">
-            <input type='text' class="form-control bg-light border-0 small" placeholder="검색">
-            <button type="button">검색</button>
-        </div>
         <div id="btnLogin">
-        <button type="button" onclick=inout() id="loginbtn">로그인</button>
-    </div>
+            <button type="button" onclick=inout() id="loginbtn">로그인</button>
+        </div>
     </nav>
 
     <!--Page Content-->
@@ -131,7 +126,6 @@
         <div>
             <h3>지금 뜨는 영화</h3>
         </div>
-
         
         <div id="main_movie"></div>
     </section>
@@ -155,6 +149,7 @@
     }
     }());
     </script>
+    
 </body>
 
 </html>
