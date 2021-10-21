@@ -17,8 +17,8 @@ body{
     margin: 0%;
 }
 form {
-    width: 300px;
-    height: 500px;
+    width: 500px;
+    height: 800px;
     background: gray;
     border-radius: 20px;
     display: flex;
@@ -30,22 +30,28 @@ form>h1 {
     margin: 2px;
     padding: 5px;
     color: white;
-    font-size: 40px;
+    font-size: 50px;
     text-align: center;
+    font-weight: bolder;
+    position: relative;
+    bottom : 15%;
 }
 
 .new_id {
     margin: 2px;
     padding: 5px;
-    font-size: 20px;
+    font-size: 40px;
     color: white;
+    font-weight: bolder;
+    position: relative;
+    bottom : 5%;
 }
 
 .new_id>input {
     margin: 2px;
     padding: 5px;
-    width: 180px;
-    height: 15px;
+    width: 250px;
+    height: 30px;
     border: 1px solid lightgray;
     text-align: left;
     float: right;
@@ -54,15 +60,18 @@ form>h1 {
 .new_pw {
     margin: 2px;
     padding: 5px;
-    font-size: 20px;
+    font-size: 40px;
     color: white;
+    font-weight: bolder;
+    position: relative;
+    bottom : 5%;
 }
 
 .new_pw>input {
     margin: 2px;
     padding: 5px;
-    width: 180px;
-    height: 15px;
+    width: 250px;
+    height: 30px;
     border: 1px solid lightgray;
     text-align: left;
     float: right;
@@ -71,15 +80,18 @@ form>h1 {
 .new_name {
     margin: 2px;
     padding: 5px;
-    font-size: 20px;
+    font-size: 40px;
     color: white;
+    font-weight: bolder;
+    position: relative;
+    bottom : 5%;
 }
 
 .new_name>input {
     margin: 2px;
     padding: 5px;
-    width: 180px;
-    height: 15px;
+    width: 250px;
+    height: 30px;
     border: 1px solid lightgray;
     text-align: left;
     float: right;
@@ -88,15 +100,19 @@ form>h1 {
 .new_phoneNb {
     margin: 2px;
     padding: 5px;
-    font-size: 20px;
+    font-size: 40px;
     color: white;
+    font-weight: bolder;
+    position: relative;
+    bottom : 5%;
+    
 }
 
 .new_phoneNb>input {
     margin: 2px;
     padding: 5px;
-    width: 180px;
-    height: 15px;
+    width: 250px;
+    height: 30px;
     border: 1px solid lightgray;
     text-align: left;
     float: right;
@@ -105,15 +121,18 @@ form>h1 {
 .new_email {
     margin: 2px;
     padding: 5px;
-    font-size: 20px;
+    font-size: 40px;
     color: white;
+    font-weight: bolder;
+    position: relative;
+    bottom : 5%;
 }
 
 .new_email>input {
     margin: 2px;
     padding: 5px;
-    width: 180px;
-    height: 15px;
+    width: 250px;
+    height: 30px;
     border: 1px solid lightgray;
     text-align: left;
     float: right;
@@ -139,10 +158,14 @@ form>h1 {
 #logo_btn{
 	color: red;
 	background-color: gray;
-    width: 300px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     font-size: 50px;
     font-weight: bolder;
     border: none;
     outline: none;
+    float: right;
+    position: relative;
+    bottom: 250%;
+    right: 5%;
 }
