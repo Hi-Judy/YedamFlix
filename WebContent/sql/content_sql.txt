@@ -10,16 +10,31 @@ opendate varchar2(100),
 grade varchar2(10),
 mOrTv varchar2(10),
 image varchar2(500),
-topContent char
+topContent varchar2(100),
+mainContent varchar2(100)
 );
 
-insert into content values ('1','동백꽃 필 무렵','공효진, 강하늘','로맨스','가족','동백이와 용식이','2019', '15세','tv','도깨비.jpg', 'y');
-insert into content values ('2','도깨비','김고은, 공유','로맨스','판타지','도깨비 살리기','2018', '15세','tv','동백.png', 'y');
-insert into content values ('3','펜트하우스','이지아, 주단태','사회','막장','권선징악','2021', '19세','tv','굿플레이스.jpg', 'n');
+insert into content values ('1','YOU 2','펜 바그들리, 빅토리아 페드레티','스릴러','긴장감','마음이 끌리는 사람에게 다가가기 위해서라면 무슨 짓이든 할 수 있는 "조"의 집착의 끝은 어딜까. ','2019', '19세','tv','you.jpg', 'tvT','main');
+insert into content values ('2','별나도 괜찮아','제니퍼 레이슨 리, 키어 길크리스트','코미디','가족애','자폐 스펙트럼 장애를 가진 샘의 첫 여자친구 사귀기 프로젝트.','2017', '18세','tv','괜찮아.png', 'n','main');
+insert into content values ('3','굿플레이스','크리스틴 벨, 테드 댄슨','코미디','사후세계','자기밖에 모르던 엘리너. 착하게 살지도 않았는데 천국, 굿플레이스에 오류로 도착한다. 굿 플레이스에 남기 위한 그녀의 개과천선 프로젝트','2016', '19세','tv','굿플레이스.jpg', 'tvT','main');
+insert into content values ('4','도깨비','공유, 김고은','판타지','도깨비와 도깨비 신부','불멸의 삶을 끝내기 위해 인간 도깨비 신부가 필요한 도깨비. 도깨비와 기묘한 동거를 시작한 저승사자. 그들 앞에 도깨비 신부라 주장하는 소녀가 나타난다.','2016', '15세','tv','도깨비.jpg', 'n','basic');
+insert into content values ('5','동백꽃 필 무렵','공효진, 강하늘','로맨스','로맨스코미디','아들 필구와 살아가는 동백이 앞에 촌므파탈 용식이의 등장. 그들의 생활밀착형 로맨스','2019', '15세','tv','동백꽃.jpg', 'n','basic');
+insert into content values ('6','루머의 루머의 루머','딜런 미넷, 캐서린 랭퍼드','미스터리 법정드라마','긴장감','친구의 자살 후 그 학교에 미스터리한 일들이 연이어 일어난다.','2017', '19세','tv','루머.jpg', 'n','basic');
+insert into content values ('7','모던패밀리','에드 오닐, 소피아 베르가라','시트콤','가족애','LA에 사는 제이프리쳇의 각양각색의 가족이야기','2009', '전체','tv','모던패밀리.jpg', 'tvT','basic');
+insert into content values ('8','미생','임시완, 이성민','웹툰 원작 드라마','감동','고졸 학력의 장그래가 한 회사의 인턴으로 일하면서 냉혹한 현실을 마주하는 이야기','2014', '15세','tv','미생.jpg', 'tvT','basic');
+insert into content values ('9','경이로운 소문','조병규, 유준상','웹툰 원작 드라마','감동','악귀 사냥꾼 카운터들의 통쾌한 액션 히어로물','2021', '15세','tv','소문.jpg', 'tvT','basic');
+insert into content values ('10','오징어게임','이정재, 박해수','스릴러','긴장감','빚더미에 짓눌린 기훈이 한방을 노리고 의문의 게임에 뛰어든다. 게임이 시작되고 경악과 공포가 시작되는데.','2021', '19tp','tv','오징어게임.jpg', 'n','basic');
 
-insert into content values ('4','모가디슈','조인성, 김윤석','사회','아프리카','모가디슈 탈출','2021', '12세','movie','어바웃타임.jpg', 'n');
-insert into content values ('5','기생충','송강호, 이선균','사회','빈익빈부익부','기생충가족','2020', '15세','movie','토이스토리.jpg', 'y');
-insert into content values ('6','라푼젤','라푼젤, 유진','애니메이션','디즈니','라푼젤의 삶','2013', '전체','movie','가오갤.jpg', 'y');
+insert into content values ('11','가디언즈 오브 갤럭시','크리스 프랫, 조 샐다나','액션','판타지','최강 빌런 ‘타노스’에 맞서 은하계를 구하고 최고의 해결사로 등극한 가.오.갤 멤버들','2017', '전체','movie','가오갤.jpg', 'mvT', 'basic');
+insert into content values ('12','기생충','송강호, 최우식','스릴러','다크','반지하에서 근근이 먹고 살던 가족이 알바로 큰 저택 곳곳의 밥줄을 꿰찬다.','2019', '15세','movie','기생충.jpg', 'mvT', 'basic');
+insert into content values ('13','라이프 온 파이','수라즈 샤르마, 이르판 칸','모험','판타지','‘파이’의 가족은 동물들을 싣고 이민을 떠나다가 폭풍우를 만나 배는 침몰한다. 구명보트에서 파이와 호랑이의 생존기','2012', '전체','movie','라이프.jpg', 'mvT', 'basic');
+insert into content values ('14','레미제라블','휴잭맨, 앤 헤서웨이','드라마','뮤지컬','장발장 이야기','2012', '전체','movie','레미제라블.jpg', 'mvT', 'basic');
+insert into content values ('15','리틀 포레스트','김태리, 류준열','드라마','감동','뭐하나 뜻대로 되지 않는 일상을 잠시 멈추고 고향으로 돌아온 혜원은 오랜 친구인 재하와 은숙을 만난다','2018', '전체','movie','리틀 포레스트.jpg', 'mvT', 'basic');
+insert into content values ('16','스파이','멜리사 맥카시, 주드 로','코미디','시트콤','CIA의 내근 요원 수잔 쿠퍼. 완벽한 최고의 요원 브래들리 파인의 파트너로 임무를 수행을 하던 중, 마피아들에게 CIA 현장 요원들의 신분이 모두 노출되는 사건이 발생한다. ','2015', '전체','movie','스파이.jpg', 'f', 'basic');
+insert into content values ('17','어바웃 타임','도널 글리슨, 레이첼 맥아담스','로맨틱 코미디','힐링','팀은 성인이 된 날, 아버지로부터 놀랄만한 가문의 비밀을 듣게 된다. 바로 시간을 되돌릴 수 있는 능력이 있다는 것!','2013', '15세','movie','어바웃타임.jpg', 'f', 'main');
+insert into content values ('18','토이스토리3','톰 행크스, 팀 알렌','애니메이션','디즈니','모든 장난감들이 겪는 가장 슬픈일은 바로 주인이 성장해 더이상 자신들과 놀아주지 않는 것. 우디와 버즈에게도 그 위기가 찾아온다.','2010', '전체','movie','토이스토리.jpg', 'f', 'main');
+insert into content values ('19','모가디슈','조인성, 김윤석','액션','아프리카','내전으로 고립된 낯선 도시, 모가디슈 지금부터 우리의 목표는 오로지 생존이다! 모가디슈 대사관 가족들의 모기디슈 탈출 이야기','2021', '15세','movie','모가디슈.jpg', 'f', 'basic');
+insert into content values ('20','신세계','최민식, 황정민','액션','범죄','경찰청 수사 기획과 강과장은 국내 최대 범죄 조직인 골드문이 기업형 조직으로 그 세력이 점점 확장되자 신입경찰 이자성에게 잠입 수사를 명한다. ','2012', '19세','movie','신세계.jpg', 'f', 'basic');
 
 commit;
 
@@ -28,5 +43,8 @@ select * from content where mOrTv='tv';
 select * from content where mOrTv='movie'; 
 select * from content where rownum<4;
 select * from content where code=1;
-select * from content where topContent='y';
+select * from content where topContent='n';
+select * from content where topContent='tvY';
+select * from content where topContent='mvY';
+select * from content where mainContent='main';
 select image from content where mOrTv='tv';
