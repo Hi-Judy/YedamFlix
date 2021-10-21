@@ -27,11 +27,11 @@ public class ContentServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		String mOrTv = request.getParameter("mOrTv");
-		System.out.println(mOrTv);
+		String mainContent = request.getParameter("mainContent");
+		System.out.println(mainContent);
 		
 		YedamFlixDAO dao = new YedamFlixDAO();
-		List<Content> clist = dao.getContent(mOrTv);
+		List<Content> clist = dao.getContent(mainContent);
 				
 		Gson gson = new GsonBuilder().create();
 		response.getWriter().println(gson.toJson(clist));

@@ -1,138 +1,219 @@
-detailPage.jsp?movie=35
-<%
- String movieId = request.getParamter("movie");
-%>
-
-<script>
-let id = '<%=movieId%>';
-
-$.ajax({
-success:function(result) {
-document.getElementById('id') =  result.movieId;
-}
-});
-
-
-</script>
-
-
-<주희. detailPageServlet>
-package app;
-
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.URLDecoder;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-@WebServlet("/DetailPageServlet")
-public class DetailPageServlet2 extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    public DetailPageServlet2() {
-        super();
-    }
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
-		
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
-		
-		//서블릿에서 데이터를 jsp로 보내기
-		String code = request.getParameter("code");
-		request.setAttribute("codeObject", code);
-		RequestDispatcher rd = request.getRequestDispatcher("detailPage.jsp");
-		rd.forward(request, response);
-		
-		YedamFlixDAO dao = new YedamFlixDAO();
-		Content content = dao.getDetailContent(code);
-		
-		Gson gson = new GsonBuilder().create();
-		response.getWriter().println(gson.toJson(content));
-
-		//서블릿을 통한 jsp 호출
-		//RequestDispatcher rd = request.getRequestDispatcher("detailPage.jsp");
-		//rd.forward(request, response); //forward란 servlet이 jsp에 위임하는 것
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
-		doGet(request, response);
-
-	}
-
-}
-
-
-<주희. detailPage.jsp>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>DetailPage</title>
-<script src="../jquery/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <script src="../jquery/jquery-3.6.0.min.js"></script>
+    <style>
+        * {
+            background-color: black;
+            font-family: "Noto Sans KR", sans-serif;
+        }
+        .nav_logo {
+            color: red;
+            font-size: 50px;
+        }
 
-<script>
-	<%
-		String detail_code = request.getParameter("code");
-	%>
-	
-	window.onload = function(){
-		detailPageLoad()
-	}
-	
-	function detailPageLoad(){
-		$.ajax({
-			url: '../DetailPageServlet',
-			type: 'get',
-			data: {code: "<%=detail_code%>"},
-			dataType: 'json',
-			success: function(result){
-				image.setAttribute('src', '../images/' +result.image);
-				document.getElementById('title').value = result.title;
-				document.getElementById('actors').value = result.actors;
-				document.getElementById('genre').value = result.genre;
-				document.getElementById('feature').value = result.feature;
-				document.getElementById('story').value = result.story;
-				
-				console.log(result);
-			},
-			error: function(reject){
-				window.alert(오류);
-			}
-			
-		});
-		
-	}
+        #loginbtn {
+            position: fixed;
+            right: 10%;
+            top: 5%;
+            margin-top: 10px;
+            width: 100px;
+            height: 35px;
+            border-radius: 10px;
+            background-color: white;
+            color: black;
+            font-size: 20px;
+            letter-spacing: 2px;
+        }
 
-	}
-</script>
+        #input1 {
+            position: fixed;
+            right: 30%;
+            top: 5%;
+            margin-top: 10px;
+            width: 70px;
+            height: 35px;
+            border-radius: 10px;
+            background-color: white;
+            color: black;
+            font-size: 20px;
+            letter-spacing: 2px;
+        }
+        #input2 {
+            position: fixed;
+            right: 25%;
+            top: 5%;
+            margin-top: 10px;
+            width: 70px;
+            height: 35px;
+            border-radius: 10px;
+            background-color: white;
+            color: black;
+            font-size: 20px;
+            letter-spacing: 2px;
+        }
+        #input3 {
+            position: fixed;
+            right: 20%;
+            top: 5%;
+            margin-top: 10px;
+            width: 70px;
+            height: 35px;
+            border-radius: 10px;
+            background-color: white;
+            color: black;
+            font-size: 20px;
+            letter-spacing: 2px;
+        }
+    </style>
+    <script>
+        //main_top컨텐츠 넣어주기
+        $.ajax({
+            url: '../TopContentServlet?topContent=y',
+            data: 'get',
+            dataType: 'json',
+            success: function (result) {
+                console.log(result);
+                for (let img of result) {
+                    let imgTag = $('<img />').attr({src : '../images/' + img.image});
+                    let btn = $('<button />').attr({id :img.code, onclick : "location.href='detailPage.jsp?code="+img.code+"'"}).append(imgTag);
+                    $('#main_top').append(btn.append(imgTag));
+                }
+            },
+            error: function (reject) {
+                console.log(reject);
+            }
+        })
+
+        //main_tv 컨텐츠 넣어주기
+        $.ajax({
+            url: '../ContentServlet?mOrTv=tv',
+            data: 'get',
+            dataType: 'json',
+            success: function (result) {
+                console.log(result);
+
+                for(let img of result){
+                	let imgTag = $('<img />').attr({src : '../images/' + img.image});
+                	let btn = $('<button />').attr({id :img.code, onclick : "location.href='detailPage.jsp?code="+img.code+"'"}).append(imgTag);
+                    $('#main_tv').append(btn.append(imgTag));
+                }
+             
+            },
+            error: function (reject) {
+                console.log(reject);
+            }
+        })
+
+        //main_movie 컨텐츠 넣어주기
+        $.ajax({
+            url: '../ContentServlet?mOrTv=movie',
+            data: 'get',
+            dataType: 'json',
+            success: function (result) {
+                console.log(result);
+
+                for(let img of result){
+                	let imgTag = $('<img />').attr({src : '../images/' + img.image});
+                	let btn = $('<button />').attr({id :img.code, onclick : "location.href='detailPage.jsp?code="+img.code+"'"}).append(imgTag);
+                	$('#main_movie').append(btn.append(imgTag));
+                }
+            },
+            error: function (reject) {
+                console.log(reject);
+            }
+        })
+
+         function inout() {
+            let loginbtn = document.getElementById('loginbtn');
+            let userid = sessionStorage.getItem('userid');
+            let userpw = sessionStorage.getItem('userpw');
+            console.log(`id : ${userid}, pw : ${userpw}`)
+
+            if(userid==null && userpw==null) {
+                loginbtn.innerText = "로그인";
+                console.log('로그인');
+                console.log(`id : ${userid}, pw : ${userpw}`);
+                location.href='../login/login.html';
+            } else{
+            	sessionStorage.removeItem('userid');
+            	sessionStorage.removeItem('userpw');
+            	
+            	alert('로그아웃');
+            	location.reload();
+            }
+        }
+
+    </script>
 </head>
+
 <body>
+    <!--Navigation 기본 구성-->
+    <nav>
+        <div id="logo">
+            <h1 class="nav_logo">YedamFlix</h1>
+        </div>
+        <div id="menu">
+            <form>
+                <input id ="input1" type='button' value='홈' onclick="location.href='../main/main.html'">
+                <input id ="input2" type='button' value='TV' onclick="location.href='../main/tv.html'">
+                <input id ="input3" type='button' value='영화' onclick="location.href='../main/movie.html'">
+            </form>
+        </div>
+        <div id="btnLogin">
+            <button type="button" onclick=inout() id="loginbtn">로그인</button>
+        </div>
+    </nav>
 
-<!-- 서블렛에 의해 호출된 jsp파일 -->>
-	<%
-		String code = (String)request.getAttribute("codeObject");
-		out.println("테스트"+code);
-	%>
-	<div id ="title"><h3>제목</h3></div>
-	<div id ="actors"><h3>출연진</h3></div>
-	<div id ="genre"><h3>장르</h3></div>
-	<div id ="feature"><h3>특징</h3></div>
-	<div id ="story"><h3>줄거리</h3></div>
-	
+    <!--Page Content-->
+    <!--기본 콘텐츠 슬라이드-->
+    <section>
+        <div id="main_top" class="model"></div>
+    </section>
 
+    <!-- 지금 뜨는 TV-->
+    <section>
+        <div>
+            <h3 class="nowTv">지금 뜨는 TV</h3>
+        </div>
+        
+        <div id="main_tv"></div>
+    </section>
+
+    <!-- 지금 뜨는 영화-->
+    <section>
+        <div>
+            <h3 class="">지금 뜨는 영화</h3>
+        </div>
+        
+        <div id="main_movie"></div>
+    </section>
+    
+    <script>
+    (function sessionCheck() {
+    	let loginbtn = document.getElementById('loginbtn');
+        let userid = sessionStorage.getItem('userid');
+        let userpw = sessionStorage.getItem('userpw');
+        console.log(`id : ${userid}, pw : ${userpw}`)
+        
+        if(userid==null && userpw==null) {
+            loginbtn.innerText = "로그인";
+            console.log('로그인');
+            console.log(`id : ${userid}, pw : ${userpw}`);
+        } else {
+            loginbtn.innerText = "로그아웃";
+            console.log('로그아웃');
+            console.log(`id : ${userid}, pw : ${userpw}`);
+            //location.href='main.html'
+    }
+    }());
+    </script>
+    
 </body>
+
 </html>

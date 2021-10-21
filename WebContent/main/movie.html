@@ -10,7 +10,7 @@
     <script>
         //top 10 movie컨텐츠 넣어주기
         $.ajax({
-            url: '../TopContentServlet?topContent=y',
+            url: '../TopContentServlet?topContent=mvT',
             data: 'get',
             dataType: 'json',
             success: function (result) {
@@ -28,7 +28,7 @@
 
         //movie_mv 지금 뜨는 movie 컨텐츠 넣어주기
         $.ajax({
-            url: '../ContentServlet?mOrTv=tv',
+            url: '../TopContentServlet?topContent=f',
             data: 'get',
             dataType: 'json',
             success: function (result) {

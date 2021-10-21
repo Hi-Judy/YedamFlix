@@ -7,74 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main</title>
     <script src="../jquery/jquery-3.6.0.min.js"></script>
-    <style>
-        * {
-            background-color: black;
-            font-family: "Noto Sans KR", sans-serif;
-        }
-        .nav_logo {
-            color: red;
-            font-size: 50px;
-        }
-
-        #loginbtn {
-            position: fixed;
-            right: 10%;
-            top: 5%;
-            margin-top: 10px;
-            width: 100px;
-            height: 35px;
-            border-radius: 10px;
-            background-color: white;
-            color: black;
-            font-size: 20px;
-            letter-spacing: 2px;
-        }
-
-        #input1 {
-            position: fixed;
-            right: 30%;
-            top: 5%;
-            margin-top: 10px;
-            width: 70px;
-            height: 35px;
-            border-radius: 10px;
-            background-color: white;
-            color: black;
-            font-size: 20px;
-            letter-spacing: 2px;
-        }
-        #input2 {
-            position: fixed;
-            right: 25%;
-            top: 5%;
-            margin-top: 10px;
-            width: 70px;
-            height: 35px;
-            border-radius: 10px;
-            background-color: white;
-            color: black;
-            font-size: 20px;
-            letter-spacing: 2px;
-        }
-        #input3 {
-            position: fixed;
-            right: 20%;
-            top: 5%;
-            margin-top: 10px;
-            width: 70px;
-            height: 35px;
-            border-radius: 10px;
-            background-color: white;
-            color: black;
-            font-size: 20px;
-            letter-spacing: 2px;
-        }
-    </style>
     <script>
         //main_top컨텐츠 넣어주기
         $.ajax({
-            url: '../TopContentServlet?topContent=y',
+            url: '../ContentServlet?mainContent=main',
             data: 'get',
             dataType: 'json',
             success: function (result) {
@@ -92,7 +28,7 @@
 
         //main_tv 컨텐츠 넣어주기
         $.ajax({
-            url: '../ContentServlet?mOrTv=tv',
+            url: '../TopContentServlet?topContent=tvT',
             data: 'get',
             dataType: 'json',
             success: function (result) {
@@ -112,7 +48,7 @@
 
         //main_movie 컨텐츠 넣어주기
         $.ajax({
-            url: '../ContentServlet?mOrTv=movie',
+            url: '../TopContentServlet?topContent=mvT',
             data: 'get',
             dataType: 'json',
             success: function (result) {
@@ -160,9 +96,9 @@
         </div>
         <div id="menu">
             <form>
-                <input id ="input1" type='button' value='홈' onclick="location.href='../main/main.html'">
-                <input id ="input2" type='button' value='TV' onclick="location.href='../main/tv.html'">
-                <input id ="input3" type='button' value='영화' onclick="location.href='../main/movie.html'">
+                <input type='button' value='홈' onclick="location.href='../main/main.html'">
+                <input type='button' value='TV' onclick="location.href='../main/tv.html'">
+                <input type='button' value='영화' onclick="location.href='../main/movie.html'">
             </form>
         </div>
         <div id="btnLogin">
@@ -176,19 +112,19 @@
         <div id="main_top" class="model"></div>
     </section>
 
-    <!-- 지금 뜨는 TV-->
+    <!-- top TV-->
     <section>
         <div>
-            <h3 class="nowTv">지금 뜨는 TV</h3>
+            <h3>인생드라마 top10</h3>
         </div>
         
         <div id="main_tv"></div>
     </section>
 
-    <!-- 지금 뜨는 영화-->
+    <!-- top 영화-->
     <section>
         <div>
-            <h3 class="">지금 뜨는 영화</h3>
+            <h3>인생영화 top10</h3>
         </div>
         
         <div id="main_movie"></div>

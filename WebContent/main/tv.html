@@ -10,7 +10,7 @@
     <script>
         //top 10 tv컨텐츠 넣어주기
         $.ajax({
-            url: '../TopContentServlet?topContent=y',
+            url: '../TopContentServlet?topContent=tvT',
             data: 'get',
             dataType: 'json',
             success: function (result) {
@@ -28,7 +28,7 @@
 
         //tv_tv 지금 뜨는 tv 컨텐츠 넣어주기
         $.ajax({
-            url: '../ContentServlet?mOrTv=tv',
+            url: '../TopContentServlet?topContent=n',
             data: 'get',
             dataType: 'json',
             success: function (result) {
