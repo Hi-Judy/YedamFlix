@@ -10,7 +10,7 @@
     <script>
         //main_top컨텐츠 넣어주기
         $.ajax({
-            url: '../TopContentServlet?topContent=y',
+            url: '../ContentServlet?mainContent=main',
             data: 'get',
             dataType: 'json',
             success: function (result) {
@@ -28,7 +28,7 @@
 
         //main_tv 컨텐츠 넣어주기
         $.ajax({
-            url: '../ContentServlet?mOrTv=tv',
+            url: '../TopContentServlet?topContent=tvT',
             data: 'get',
             dataType: 'json',
             success: function (result) {
@@ -48,7 +48,7 @@
 
         //main_movie 컨텐츠 넣어주기
         $.ajax({
-            url: '../ContentServlet?mOrTv=movie',
+            url: '../TopContentServlet?topContent=mvT',
             data: 'get',
             dataType: 'json',
             success: function (result) {

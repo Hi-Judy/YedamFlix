@@ -15,15 +15,15 @@ public class YedamFlixDAO extends DAO{
 	}
 	
 	//컨텐츠 목록 가져오기
-	public List<Content> getContent(String mOrTv){
+	public List<Content> getContent(String mainContent){
 		connect();
 		List<Content> clist = new ArrayList<>();
-		String sql = "select * from content where mOrTv=nvl(?, mOrTv)";
+		String sql = "select * from content where mainContent=nvl(?, mainContent)";
 		System.out.println("aaa:"+sql);
 		
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1,mOrTv);
+			psmt.setString(1,mainContent);
 			rs=psmt.executeQuery();
 			
 			while(rs.next()) {

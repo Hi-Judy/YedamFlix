@@ -12,6 +12,7 @@ public class Content {
 	private String image;
 	private String topContent;
 	private String mOrTv;
+	private String mainContent;
 	
 	public String getmOrTv() {
 		return mOrTv;
@@ -79,11 +80,19 @@ public class Content {
 	public void setTopContent(String topContent) {
 		this.topContent = topContent;
 	}
+	
+	public String getMainContent() {
+		return mainContent;
+	}
+	public void setMainContent(String mainContent) {
+		this.mainContent = mainContent;
+	}
 	@Override
 	public String toString() {
 		return "Content [code=" + code + ", title=" + title + ", actors=" + actors + ", genre=" + genre + ", feature="
 				+ feature + ", story=" + story + ", opendate=" + opendate + ", grade=" + grade + ", image=" + image
-				+ ", topContent=" + topContent + ", mOrTv=" + mOrTv + "]";
+				+ ", topContent=" + topContent + ", mOrTv=" + mOrTv + ", mainContent=" + mainContent + "]";
 	}
+	
 }
 	
