@@ -7,26 +7,25 @@
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script src="../jquery/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="login.css">
-    <a href="../main/main.html"></a>
 </head>
 
 <body>
     
     <div class="wrap">
         <div class="login">
-            <h1>로그인</h1><br>
+            <h1>로그인</h1><br><br><br>
             <div class="login_id">
                 <i class="fas fa-user fa-2x "></i> &nbsp;
                 <input id='inputId' type="text" placeholder="  Id">
             </div>
             <div class="login_pw">
-                <i class="fas fa-key fa-2x"></i> &nbsp;
+                <i id="pwicon" class="fas fa-key fa-2x"></i> &nbsp;
                 <input id='inputPw' type="text" placeholder="  Password">
-            </div>
+            </div><br>
             <div class="button">
                 <button id="login_btn">로그인</button>
                 <button onclick="location.href='membership.html'" id="membership_btn">회원가입</button>
-            </div>
+            </div><br>
             <div class="login_re">
                 <div class="checkbox">
                     <input id="checkBox" type="checkbox" checked> 로그인 상태 유지
