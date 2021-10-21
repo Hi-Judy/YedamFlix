@@ -17,7 +17,7 @@
                 console.log(result);
                 for (let img of result) {
                     let imgTag = $('<img />').attr({src : '../images/' + img.image});
-                    let btn = $('<button />').attr({id :img.code, onclick : "location.href='../DetailPageServlet?code='"+img.code}).append(imgTag);
+                    let btn = $('<button />').attr({id :img.code, onclick : "location.href='detailPage3.jsp?code="+img.code+"'"}).append(imgTag);
                     $('#main_top').append(btn.append(imgTag));
                 }
             },
@@ -65,6 +65,20 @@
             }
         })
 
+         function inout() {
+            let loginbtn = document.getElementById('loginbtn');
+            let userid = sessionStorage.getItem('userid');
+            let userpw = sessionStorage.getItem('userpw');
+            console.log(`id : ${userid}, pw : ${userpw}`)
+
+            if(sessionStorage==null) {
+                loginbtn.innerText = "로그인";
+            } else {
+                loginbtn.innerText = "로그아웃";
+                
+                location.href='../main/main.html';
+            }
+        }
 
     </script>
 </head>
@@ -87,7 +101,7 @@
             <button type="button">검색</button>
         </div>
         <div id="btnLogin">
-            <button type="button" onclick="location.href='../login/login.html'">로그인</button>
+            <button type="button" onclick=inout() id="loginbtn">로그인</button>
         </div>
     </nav>
 
