@@ -32,24 +32,84 @@
 				$("#genre").append(result.genre);
 				$("#feature").append(result.feature);
 				$("#story").append(result.story);
-				
+				let imgTag = $('<img />').attr({src : '../images/' + result.image});
+                $('#img').append(imgTag);
 				
 			}
 		})
 	}
+	
+	function inout() {
+        let loginbtn = document.getElementById('loginbtn');
+        let userid = sessionStorage.getItem('userid');
+        let userpw = sessionStorage.getItem('userpw');
+        console.log(`id : ${userid}, pw : ${userpw}`)
+
+        if(userid==null && userpw==null) {
+            loginbtn.innerText = "로그인";
+            console.log('로그인');
+            console.log(`id : ${userid}, pw : ${userpw}`);
+            location.href='../login/login.html';
+        } else{
+        	sessionStorage.removeItem('userid');
+        	sessionStorage.removeItem('userpw');
+        	
+        	alert('로그아웃');
+        	location.reload();
+        }
+    }
 </script>
 </head>
 <body>
-<!-- 서블렛에 의해 호출된 jsp파일 -->>
+<!--Navigation 기본 구성-->
+    <nav>
+        <div id="logo">
+            <h1 class="nav_logo">YedamFlix</h1>
+        </div>
+        <div id="menu">
+            <form>
+                <input type='button' value='홈' onclick="location.href='../main/main.html'">
+                <input type='button' value='TV' onclick="location.href='../main/tv.html'">
+                <input type='button' value='영화' onclick="location.href='../main/movie.html'">
+            </form>
+        </div>
+        <div id="btnLogin">
+            <button type="button" onclick=inout() id="loginbtn">로그인</button>
+        </div>
+    </nav>
+    
+    
+<!-- 서블렛에 의해 호출된 jsp파일 -->
 	<%
 		String codeOb = (String)request.getAttribute("codeObject");
-		out.println("테스트");
 	%>
+	
+	<br>
+	<div id ="img"></div>
 	<div id ="title"><h3>제목</h3></div>
 	<div id ="actors"><h3>출연진</h3></div>
 	<div id ="genre"><h3>장르</h3></div>
 	<div id ="feature"><h3>특징</h3></div>
 	<div id ="story"><h3>줄거리</h3></div>
 	
+	<script>
+    (function sessionCheck() {
+    	let loginbtn = document.getElementById('loginbtn');
+        let userid = sessionStorage.getItem('userid');
+        let userpw = sessionStorage.getItem('userpw');
+        console.log(`id : ${userid}, pw : ${userpw}`)
+        
+        if(userid==null && userpw==null) {
+            loginbtn.innerText = "로그인";
+            console.log('로그인');
+            console.log(`id : ${userid}, pw : ${userpw}`);
+        } else {
+            loginbtn.innerText = "로그아웃";
+            console.log('로그아웃');
+            console.log(`id : ${userid}, pw : ${userpw}`);
+            //location.href='main.html'
+    }
+    }());
+    </script>
 </body>
 </html>

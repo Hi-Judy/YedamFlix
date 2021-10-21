@@ -71,12 +71,17 @@
             let userpw = sessionStorage.getItem('userpw');
             console.log(`id : ${userid}, pw : ${userpw}`)
 
-            if(sessionStorage==null) {
+            if(userid==null && userpw==null) {
                 loginbtn.innerText = "로그인";
-            } else {
-                loginbtn.innerText = "로그아웃";
-                
-                location.href='../main/main.html';
+                console.log('로그인');
+                console.log(`id : ${userid}, pw : ${userpw}`);
+                location.href='../login/login.html';
+            } else{
+            	sessionStorage.removeItem('userid');
+            	sessionStorage.removeItem('userpw');
+            	
+            	alert('로그아웃');
+            	location.reload();
             }
         }
 
@@ -95,10 +100,6 @@
                 <input type='button' value='TV' onclick="location.href='../main/tv.html'">
                 <input type='button' value='영화' onclick="location.href='../main/movie.html'">
             </form>
-        </div>
-        <div id="btnSearch">
-            <input type='text' class="form-control bg-light border-0 small" placeholder="검색">
-            <button type="button">검색</button>
         </div>
         <div id="btnLogin">
             <button type="button" onclick=inout() id="loginbtn">로그인</button>
@@ -128,6 +129,27 @@
         
         <div id="main_movie"></div>
     </section>
+    
+    <script>
+    (function sessionCheck() {
+    	let loginbtn = document.getElementById('loginbtn');
+        let userid = sessionStorage.getItem('userid');
+        let userpw = sessionStorage.getItem('userpw');
+        console.log(`id : ${userid}, pw : ${userpw}`)
+        
+        if(userid==null && userpw==null) {
+            loginbtn.innerText = "로그인";
+            console.log('로그인');
+            console.log(`id : ${userid}, pw : ${userpw}`);
+        } else {
+            loginbtn.innerText = "로그아웃";
+            console.log('로그아웃');
+            console.log(`id : ${userid}, pw : ${userpw}`);
+            //location.href='main.html'
+    }
+    }());
+    </script>
+    
 </body>
 
 </html>
