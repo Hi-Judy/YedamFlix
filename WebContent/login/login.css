@@ -29,27 +29,30 @@ h1 {
     color: white;
     font-size: 50px;
     font-weight: bolder;
+    position: relative;
+    bottom : 5%;
 }
 
 .login_id>input {
     width: 300px;
     height: 50px;
     border-radius: 5px;
-    margin-top: 5px;
+    margin-top: -50px;
     border: 1px solid lightgray;
     text-align: left;
     float: right;
+    font-size: 20px;
 }
 
 #idicon {
     position: relative;
-    top: 25%;
+    bottom: 120%;
     left: 0%;
 }
 
 #pwicon {
     position: relative;
-    top: 25%;
+    bottom: 30%;
     left: -1%;
 }
 
@@ -57,10 +60,11 @@ h1 {
     width: 300px;
     height: 50px;
     border-radius: 5px;
-    margin-top: 5px;
+    margin-top: -20px;
     border: 1px solid lightgray;
     text-align: left;
     float: right;
+    font-size: 20px;
 }
 
 #login_btn {
@@ -74,6 +78,8 @@ h1 {
     color: white;
     font-size: 1.2em;
     letter-spacing: 2px;
+    font-size: 20px;
+    font-weight: bolder;
 }
 
 #membership_btn {
@@ -87,17 +93,21 @@ h1 {
     color: white;
     font-size: 1.2em;
     letter-spacing: 2px;
+    font-size: 20px;
+    font-weight: bolder;
 }
 
 .login_re {
     padding: 10px;
     width: 80%;
-    font-size: 15px;
+    font-size: 17px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-weight: bold;
     color: white;
+    margin-left: 130px;
+    
 }
 
 #logo_btn{
@@ -109,4 +119,10 @@ h1 {
     font-weight: bolder;
     border: none;
     outline: none;
+    position: relative;
+    bottom : 80%;
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/Hi-Judy/YedamFlix.git
 }
