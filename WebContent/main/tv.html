@@ -17,8 +17,13 @@
             success: function (result) {
                 console.log(result);
                 for (let img of result) {
-                    let imgTag = $('<img />').attr({src : '../images/' + img.image});
-                    let btn = $('<button />').attr({id :img.code, onclick : "location.href='detailPage.jsp?code="+img.code+"'"}).append(imgTag);
+                    let imgTag = $('<img />').attr({
+                        src: '../images/' + img.image
+                    });
+                    let btn = $('<button />').attr({
+                        id: img.code,
+                        onclick: "location.href='detailPage.jsp?code=" + img.code + "'"
+                    }).append(imgTag);
                     $('#tv_topTV').append(btn.append(imgTag));
                 }
             },
@@ -35,38 +40,42 @@
             success: function (result) {
                 console.log(result);
 
-                for(let img of result){
-                	let imgTag = $('<img />').attr({src : '../images/' + img.image});
-                	let btn = $('<button />').attr({id :img.code, onclick : "location.href='detailPage.jsp?code="+img.code+"'"}).append(imgTag);
-                	$('#tv_tv').append(btn.append(imgTag));
+                for (let img of result) {
+                    let imgTag = $('<img />').attr({
+                        src: '../images/' + img.image
+                    });
+                    let btn = $('<button />').attr({
+                        id: img.code,
+                        onclick: "location.href='detailPage.jsp?code=" + img.code + "'"
+                    }).append(imgTag);
+                    $('#tv_tv').append(btn.append(imgTag));
                 }
-             
+
             },
             error: function (reject) {
                 console.log(reject);
             }
         })
 
-      	function inout() {
+        function inout() {
             let loginbtn = document.getElementById('loginbtn');
             let userid = sessionStorage.getItem('userid');
             let userpw = sessionStorage.getItem('userpw');
             console.log(`id : ${userid}, pw : ${userpw}`)
 
-            if(userid==null && userpw==null) {
+            if (userid == null && userpw == null) {
                 loginbtn.innerText = "로그인";
                 console.log('로그인');
                 console.log(`id : ${userid}, pw : ${userpw}`);
-                location.href='../login/login.html';
-            } else{
-            	sessionStorage.removeItem('userid');
-            	sessionStorage.removeItem('userpw');
-            	
-            	alert('로그아웃');
-            	location.reload();
+                location.href = '../login/login.html';
+            } else {
+                sessionStorage.removeItem('userid');
+                sessionStorage.removeItem('userpw');
+
+                alert('로그아웃');
+                location.reload();
             }
         }
-
     </script>
 </head>
 
@@ -74,12 +83,12 @@
     <!--Navigation 기본 구성-->
     <nav>
         <div id="logo">
-        <input id ="logo_btn" type='button' value='YedamFlix' onclick="location.href='../main/main.html'">
+            <input id="logo_btn" type='button' value='YedamFlix' onclick="location.href='../main/main.html'">
         </div>
         <div id="menu">
             <form>
-                <input id ="input2" type='button' value='TV' onclick="location.href='../main/tv.html'">
-                <input id ="input3" type='button' value='영화' onclick="location.href='../main/movie.html'">
+                <input id="input2" type='button' value='TV' onclick="location.href='../main/tv.html'">
+                <input id="input3" type='button' value='영화' onclick="location.href='../main/movie.html'">
             </form>
         </div>
         <div id="btnLogin">
@@ -88,43 +97,45 @@
     </nav>
 
     <!--Page Content-->
-    
-    <!-- 지금 뜨는 TV-->
-    <section>
-        <div>
-            <h1 id="tv_tvT">지금 뜨는 TV</h1>
-        </div>
-        
-        <div id="tv_tv"></div>
-    </section>
 
-    <!-- top10 tv-->
-    <section>
-        <div>
-            <h1 id="tv_topT">인생드라마 top10</h1>
-        </div>
-        
-        <div id="tv_topTV"></div>
-    </section>
-    
+    <!-- 지금 뜨는 TV-->
+    <div>
+        <section>
+            <div>
+                <h1 id="tv_tvT">지금 뜨는 TV</h1>
+            </div>
+
+            <div id="tv_tv"></div>
+        </section>
+
+        <!-- top10 tv-->
+        <section>
+            <div>
+                <h1 id="tv_topT">인생드라마 top10</h1>
+            </div>
+
+            <div id="tv_topTV"></div>
+        </section>
+    </div>
+
     <script>
-    (function sessionCheck() {
-    	let loginbtn = document.getElementById('loginbtn');
-        let userid = sessionStorage.getItem('userid');
-        let userpw = sessionStorage.getItem('userpw');
-        console.log(`id : ${userid}, pw : ${userpw}`)
-        
-        if(userid==null && userpw==null) {
-            loginbtn.innerText = "로그인";
-            console.log('로그인');
-            console.log(`id : ${userid}, pw : ${userpw}`);
-        } else {
-            loginbtn.innerText = "로그아웃";
-            console.log('로그아웃');
-            console.log(`id : ${userid}, pw : ${userpw}`);
-            //location.href='main.html'
-    }
-    }());
+        (function sessionCheck() {
+            let loginbtn = document.getElementById('loginbtn');
+            let userid = sessionStorage.getItem('userid');
+            let userpw = sessionStorage.getItem('userpw');
+            console.log(`id : ${userid}, pw : ${userpw}`)
+
+            if (userid == null && userpw == null) {
+                loginbtn.innerText = "로그인";
+                console.log('로그인');
+                console.log(`id : ${userid}, pw : ${userpw}`);
+            } else {
+                loginbtn.innerText = "로그아웃";
+                console.log('로그아웃');
+                console.log(`id : ${userid}, pw : ${userpw}`);
+                //location.href='main.html'
+            }
+        }());
     </script>
 </body>
 
