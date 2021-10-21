@@ -3,20 +3,6 @@
     font-family: "Noto Sans KR", sans-serif;
 }
 
-#loginbtn {
-    position: absolute;
-    top: 5%;
-    right: 3%;
-    margin-top: 10px;
-    width: 100px;
-    height: 35px;
-    border-radius: 10px;
-    background-color: white;
-    color: black;
-    font-size: 20px;
-    letter-spacing: 2px;
-}
-
 #logo_btn {
     position: relative;
     left: 3%;
@@ -32,13 +18,26 @@
     border: none;
     outline: none;
 }
+#loginbtn {
+    position: absolute;
+    top: 5%;
+    right: 3%;
+    margin-top: 10px;
+    width: 130px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
 #input2 {
     position: absolute;
     top: 5%;
     right: 20%;
     margin-top: 10px;
     width: 90px;
-    height: 35px;
+    height: 40px;
     border-radius: 10px;
     background-color: white;
     color: black;
@@ -51,12 +50,20 @@
     right: 15%;
     margin-top: 10px;
     width: 90px;
-    height: 35px;
+    height: 40px;
     border-radius: 10px;
     background-color: white;
     color: black;
     font-size: 20px;
     letter-spacing: 2px;
+}
+.wrap {
+    width: 90%;
+    height: 100vh;
+    text-align: left;
+    position: absolute;
+    right: 5%;
+    left: 5%;
 }
 #main_tvT {
     color: white;
