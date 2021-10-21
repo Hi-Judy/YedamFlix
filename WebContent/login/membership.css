@@ -17,8 +17,8 @@ body{
     margin: 0%;
 }
 form {
-    width: 500px;
-    height: 800px;
+    width: 300px;
+    height: 500px;
     background: gray;
     border-radius: 20px;
     display: flex;
@@ -30,126 +30,93 @@ form>h1 {
     margin: 2px;
     padding: 5px;
     color: white;
-    font-size: 50px;
+    font-size: 40px;
     text-align: center;
-    font-weight: bolder;
-    position: relative;
-    bottom : 15%;
 }
 
 .new_id {
     margin: 2px;
     padding: 5px;
-    font-size: 30px;
+    font-size: 20px;
     color: white;
-    position: relative;
-    left: 5%;
-    bottom: 5%;
 }
 
 .new_id>input {
     margin: 2px;
     padding: 5px;
-    width: 280px;
-    height: 20px;
+    width: 180px;
+    height: 15px;
     border: 1px solid lightgray;
     text-align: left;
     float: right;
-    position: relative;
-    right: 10%;
-    top: 10%;
 }
 
 .new_pw {
     margin: 2px;
     padding: 5px;
-    font-size: 30px;
+    font-size: 20px;
     color: white;
-    position: relative;
-    left: 5%;
-    bottom: 5%;
 }
 
 .new_pw>input {
     margin: 2px;
     padding: 5px;
-    width: 280px;
-    height: 20px;
+    width: 180px;
+    height: 15px;
     border: 1px solid lightgray;
     text-align: left;
     float: right;
-    position: relative;
-    right: 10%;
-    top: 10%;
 }
 
 .new_name {
     margin: 2px;
     padding: 5px;
-    font-size: 30px;
+    font-size: 20px;
     color: white;
-    position: relative;
-    left: 5%;
-    bottom: 5%;
 }
 
 .new_name>input {
     margin: 2px;
     padding: 5px;
-    width: 280px;
-    height: 20px;
+    width: 180px;
+    height: 15px;
     border: 1px solid lightgray;
     text-align: left;
     float: right;
-    position: relative;
-    right: 10%;
-    top: 10%;
 }
 
 .new_phoneNb {
     margin: 2px;
     padding: 5px;
-    font-size: 30px;
+    font-size: 20px;
     color: white;
-    position: relative;
-    left: 5%;
-    bottom: 5%;
 }
 
 .new_phoneNb>input {
     margin: 2px;
     padding: 5px;
-    width: 280px;
-    height: 20px;
+    width: 180px;
+    height: 15px;
     border: 1px solid lightgray;
     text-align: left;
     float: right;
-    position: relative;
-    right: 10%;
-    top: 10%;
 }
 
 .new_email {
     margin: 2px;
     padding: 5px;
-    font-size: 30px;
+    font-size: 20px;
     color: white;
-    position: relative;
-    left: 5%;
-    bottom: 5%;
 }
 
 .new_email>input {
     margin: 2px;
     padding: 5px;
-    width: 280px;
-    height: 20px;
+    width: 180px;
+    height: 15px;
     border: 1px solid lightgray;
     text-align: left;
     float: right;
-    position: relative;
-    right: 10%;
-    top: 10%;
 }
 
 .submit {
@@ -161,11 +128,21 @@ form>h1 {
     padding: 5px;
     margin-top: 20px;
     padding: 5px;
-    width: 200px;
-    height: 55px;
+    width: 150px;
+    height: 50px;
     background-color: red;
     color: white;
-    font-size: 30px;
+    font-size: 1.3em;
     letter-spacing: 2px;
 }
 
+#logo_btn{
+	color: red;
+	background-color: gray;
+    width: 300px;
+    height: 100px;
+    font-size: 50px;
+    font-weight: bolder;
+    border: none;
+    outline: none;
+}
