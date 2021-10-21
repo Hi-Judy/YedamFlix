@@ -1,3 +1,4 @@
+//주희. jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -6,7 +7,7 @@
 <meta charset="UTF-8">
 <title>DetailPage</title>
 <script src="../jquery/jquery-3.6.0.min.js"></script>
-<link href="detailPage.css" rel="stylesheet" />
+
 <script>
 	<%
 		String code = request.getParameter("code");
@@ -88,38 +89,14 @@
 	
 	<br>
 	<div id ="img"></div>
-
-	<table>
-		<tr>
-			<td><h3>제목&ensp;</h3></td>
-			<td id ="title"></td>
-		</tr>
-		<tr>
-			<td><h3>출연진&ensp;</h3></td>
-			<td id ="actors"></td>
-		</tr>
-		<tr>
-			<td><h3>장르&ensp;</h3></td>
-			<td id ="genre"></td>
-		</tr>
-		<tr>
-			<td><h3>특징&ensp;</h3></td>
-			<td id ="feature"></td>
-		</tr>
-		<tr>
-			<td><h3>줄거리&ensp;</h3></td>
-			<td id ="story"></td>
-		</tr>
-		<tr>
-			<td><h3>등급&ensp;</h3></td>
-			<td id ="grade"></td>
-		</tr>
-		<tr>
-			<td><h3>방영일&ensp;</h3></td>
-			<td id ="opendate"></td>
-		</tr>
-		
-	</table>	
+	<div id ="title"><h3>제목</h3></div>
+	<div id ="actors"><h3>출연진</h3></div>
+	<div id ="genre"><h3>장르</h3></div>
+	<div id ="feature"><h3>특징</h3></div>
+	<div id ="story"><h3>줄거리</h3></div>
+	<div id ="grade"><h3>등급</h3></div>
+	<div id ="opendate"><h3>방영일</h3></div>
+	
 	<script>
     (function sessionCheck() {
     	let loginbtn = document.getElementById('loginbtn');

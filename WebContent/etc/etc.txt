@@ -136,3 +136,4 @@ public class DetailPageServlet2 extends HttpServlet {
 
 </body>
 </html>
+
