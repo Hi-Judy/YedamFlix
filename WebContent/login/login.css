@@ -40,10 +40,17 @@ h1 {
     text-align: left;
     float: right;
 }
-#pwicon{
-    position: absolute;
-    top: 50%;
-    left: 23%;
+
+#idicon {
+    position: relative;
+    top: 25%;
+    left: 0%;
+}
+
+#pwicon {
+    position: relative;
+    top: 25%;
+    left: -1%;
 }
 
 .login_pw>input {
@@ -55,18 +62,33 @@ h1 {
     text-align: left;
     float: right;
 }
-button {
+
+#login_btn {
     margin-top: 20px;
     outline: red;
     padding: 5px;
-    width: 100px;
+    width: 130px;
     height: 50px;
     border-radius: 10px;
     background-color: red;
     color: white;
     font-size: 1.2em;
     letter-spacing: 2px;
-	}
+}
+
+#membership_btn {
+    margin-top: 20px;
+    outline: red;
+    padding: 5px;
+    width: 130px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+}
+
 .login_re {
     padding: 10px;
     width: 80%;
